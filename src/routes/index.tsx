@@ -5,7 +5,9 @@ import { AboutSection } from '../components/sections/AboutSection';
 import { ProjectsSection } from '../components/sections/ProjectsSection';
 import { ContactSection } from '../components/sections/ContactSection';
 import { ParticlesBackground } from '../components/ParticlesBackground';
+import { Footer } from '../components/Footer';
 import { useMemo, useCallback, useState } from 'react';
+import { ExperienceSection } from '../components/sections/ExperienceSection';
 
 export const Route = createFileRoute('/')({
     component: Index,
@@ -49,6 +51,12 @@ function Index() {
                 content: <ProjectsSection />,
             },
             {
+                id: 'experience',
+                label: 'Experience',
+                icon: '💼',
+                content: <ExperienceSection />,
+            },
+            {
                 id: 'contact',
                 label: 'Contact',
                 icon: '✉️',
@@ -69,7 +77,7 @@ function Index() {
 
                     {/* Decorative Shapes */}
                     <div className='absolute top-[20%] right-[5%] md:right-[10%] w-16 h-16 md:w-24 md:h-24 border-2 border-teal-400/30 rounded-lg rotate-12 floating spinning'></div>
-                    <div className='absolute bottom-[10%] left-[5%] md:left-[10%] w-20 h-20 md:w-32 md:h-32 border-2 border-teal-400/30 rounded-full floating-reverse spinning-reverse'></div>
+                    <div className='absolute bottom-[10%] left-[5%] md:left-[8%] w-20 h-20 md:w-32 md:h-32 border-2 border-teal-400/30 rounded-full floating-reverse spinning-reverse'></div>
                     <div className='absolute top-[40%] left-[2%] md:left-[5%] w-12 h-12 md:w-16 md:h-16 border-2 border-teal-400/30 rounded-lg rotate-45 floating spinning'></div>
                     <div className='absolute bottom-[40%] right-[8%] md:right-[15%] w-14 h-14 md:w-20 md:h-20 border-2 border-teal-400/30 rounded-full pulsing'></div>
                     <div className='absolute bottom-[20%] right-[15%] md:right-[25%] w-8 h-8 md:w-12 md:h-12 border-2 border-teal-400/30 rounded-lg -rotate-12 floating-reverse spinning-reverse'></div>
@@ -159,11 +167,14 @@ function Index() {
                 </section>
 
                 {/* Content Section */}
-                <section className='relative px-4 py-20'>
-                    <div className='max-w-7xl mx-auto'>
+                <section className='relative px-4'>
+                    <div className='max-w-7xl mx-auto -mt-32'>
                         <TabView tabs={tabs} selectedIndex={selectedTabIndex} onChange={setSelectedTabIndex} className='fade-in-up w-full' />
                     </div>
                 </section>
+
+                {/* Footer */}
+                <Footer />
             </div>
         </div>
     );
