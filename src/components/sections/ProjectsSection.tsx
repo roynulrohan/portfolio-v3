@@ -143,7 +143,7 @@ export function ProjectsSection() {
                                     src={getScreenshotUrl(project.previewUrl)}
                                     alt={`${project.title} preview`}
                                     className='w-full h-full object-cover object-top transform group-hover:scale-105 transition-transform duration-500'
-                                    loading='lazy'
+                                    loading='eager'
                                     onLoad={() => handleImageLoad(project.title)}
                                     onError={() => handleImageError(project.title)}
                                     style={{ opacity: loadingImages[project.title] === false ? 1 : 0 }}
@@ -155,7 +155,7 @@ export function ProjectsSection() {
                                     src={project.thumbnailUrl}
                                     alt={`${project.title} thumbnail`}
                                     className='w-full h-full object-cover object-top transform group-hover:scale-105 transition-transform duration-500'
-                                    loading='lazy'
+                                    loading='eager'
                                 />
                             </>
                         ) : (

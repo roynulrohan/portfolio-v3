@@ -1,36 +1,26 @@
 import { motion } from 'framer-motion';
-import { useState } from 'react';
 
 export function ContactSection() {
-    const [formStatus, setFormStatus] = useState<'idle' | 'sending' | 'sent' | 'error'>('idle');
-
-    const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-        e.preventDefault();
-        setFormStatus('sending');
-        
-        // Simulate form submission
-        setTimeout(() => {
-            setFormStatus('sent');
-            setTimeout(() => setFormStatus('idle'), 3000);
-        }, 1500);
-    };
-
     return (
-        <div className="space-y-8">
+        <div className="space-y-12">
             <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5 }}
                 className="space-y-4"
             >
-                <h2 className="text-3xl font-bold text-white">Get in Touch</h2>
-                <p className="text-lg text-white/80 leading-relaxed">
+                <h2 className="text-3xl font-bold text-white flex items-center gap-3">
+                    <span className="text-teal-400 text-3xl">{'{'}</span>
+                    Get in Touch
+                    <span className="text-teal-400 text-3xl">{'}'}</span>
+                </h2>
+                <p className="text-lg text-white/80 leading-relaxed max-w-3xl">
                     I'm always interested in hearing about new projects and opportunities. 
                     Whether you have a question or just want to say hi, feel free to drop me a message!
                 </p>
             </motion.div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div className="grid grid-cols-1 lg:grid-cols-[1fr,1.5fr] gap-8">
                 {/* Contact Info */}
                 <motion.div
                     initial={{ opacity: 0, x: -20 }}
@@ -38,12 +28,38 @@ export function ContactSection() {
                     transition={{ duration: 0.5, delay: 0.2 }}
                     className="space-y-6"
                 >
-                    <div className="space-y-4">
-                        <h3 className="text-xl font-semibold text-white">Contact Information</h3>
-                        <div className="space-y-4">
+                    {/* Status Card */}
+                    <div className="p-6 rounded-xl bg-base-300/50 border border-teal-400/20 hover:border-teal-400/40 transition-all group relative">
+                        {/* Status Indicator */}
+                        <div className="absolute top-4 right-4 flex items-center gap-2">
+                            <span className="text-sm font-medium text-emerald-400">Available</span>
+                            <div className="relative flex">
+                                <div className="w-3 h-3 bg-emerald-400 rounded-full"></div>
+                                <div className="absolute inset-0 w-3 h-3 bg-emerald-400 rounded-full animate-ping"></div>
+                                <div className="absolute inset-0 w-3 h-3 bg-emerald-400/40 rounded-full animate-pulse"></div>
+                            </div>
+                        </div>
+
+                        <h4 className="text-lg font-medium text-white flex items-center gap-2 mb-3">
+                            <span className="text-2xl">🎯</span>
+                            Current Status
+                        </h4>
+                        <p className="text-white/80">
+                            Open to new opportunities and interesting projects. 
+                            Feel free to reach out for collaborations or just a friendly chat!
+                        </p>
+                    </div>
+
+                    {/* Contact Links */}
+                    <div className="p-6 rounded-xl bg-base-300/50 border border-teal-400/20 hover:border-teal-400/40 transition-all">
+                        <h3 className="text-xl font-semibold text-white flex items-center gap-2 mb-6">
+                            <span className="text-2xl">📬</span>
+                            Contact Information
+                        </h3>
+                        <div className="flex flex-col gap-4">
                             <a
                                 href="mailto:roynulrohan@gmail.com"
-                                className="flex items-center gap-3 text-white/80 hover:text-teal-400 transition-colors group"
+                                className="flex items-center gap-3 p-3 rounded-lg bg-base-300/30 border border-teal-400/10 hover:border-teal-400/30 text-white/80 hover:text-teal-400 transition-all group"
                             >
                                 <div className="p-2 rounded-lg bg-base-300/50 border border-teal-400/20 group-hover:border-teal-400/40 transition-colors">
                                     <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
@@ -57,7 +73,7 @@ export function ContactSection() {
                                 href="https://github.com/roynulrohan"
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="flex items-center gap-3 text-white/80 hover:text-teal-400 transition-colors group"
+                                className="flex items-center gap-3 p-3 rounded-lg bg-base-300/30 border border-teal-400/10 hover:border-teal-400/30 text-white/80 hover:text-teal-400 transition-all group"
                             >
                                 <div className="p-2 rounded-lg bg-base-300/50 border border-teal-400/20 group-hover:border-teal-400/40 transition-colors">
                                     <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 24 24" fill="currentColor">
@@ -70,7 +86,7 @@ export function ContactSection() {
                                 href="https://linkedin.com/in/roynul-rohan"
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="flex items-center gap-3 text-white/80 hover:text-teal-400 transition-colors group"
+                                className="flex items-center gap-3 p-3 rounded-lg bg-base-300/30 border border-teal-400/10 hover:border-teal-400/30 text-white/80 hover:text-teal-400 transition-all group"
                             >
                                 <div className="p-2 rounded-lg bg-base-300/50 border border-teal-400/20 group-hover:border-teal-400/40 transition-colors">
                                     <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 24 24" fill="currentColor">
@@ -81,75 +97,54 @@ export function ContactSection() {
                             </a>
                         </div>
                     </div>
-
-                    <div className="p-6 rounded-xl bg-base-300/50 border border-teal-400/20">
-                        <h4 className="text-lg font-medium text-white mb-2">Current Status</h4>
-                        <p className="text-white/80">
-                            Open to new opportunities and interesting projects. 
-                            Feel free to reach out for collaborations or just a friendly chat!
-                        </p>
-                    </div>
                 </motion.div>
 
                 {/* Contact Form */}
-                <motion.form
+                <motion.div
                     initial={{ opacity: 0, x: 20 }}
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ duration: 0.5, delay: 0.2 }}
-                    onSubmit={handleSubmit}
-                    className="space-y-4"
+                    className="p-6 rounded-xl bg-base-300/50 border border-teal-400/20 hover:border-teal-400/40 transition-all"
                 >
-                    <div className="space-y-2">
-                        <label htmlFor="name" className="block text-white/80">Name</label>
-                        <input
-                            type="text"
-                            id="name"
-                            required
-                            className="w-full px-4 py-2 rounded-lg bg-base-300/50 border border-teal-400/20 focus:border-teal-400/40 text-white/80 focus:outline-none"
-                            placeholder="Your name"
-                        />
-                    </div>
-                    <div className="space-y-2">
-                        <label htmlFor="email" className="block text-white/80">Email</label>
-                        <input
-                            type="email"
-                            id="email"
-                            required
-                            className="w-full px-4 py-2 rounded-lg bg-base-300/50 border border-teal-400/20 focus:border-teal-400/40 text-white/80 focus:outline-none"
-                            placeholder="your@email.com"
-                        />
-                    </div>
-                    <div className="space-y-2">
-                        <label htmlFor="message" className="block text-white/80">Message</label>
-                        <textarea
-                            id="message"
-                            rows={4}
-                            required
-                            className="w-full px-4 py-2 rounded-lg bg-base-300/50 border border-teal-400/20 focus:border-teal-400/40 text-white/80 focus:outline-none resize-none"
-                            placeholder="Your message..."
-                        ></textarea>
-                    </div>
-                    <button
-                        type="submit"
-                        disabled={formStatus !== 'idle'}
-                        className={`
-                            w-full px-6 py-3 rounded-lg font-medium transition-all relative
-                            ${formStatus === 'idle' 
-                                ? 'bg-teal-400 hover:bg-teal-500 text-black/80 hover:text-black' 
-                                : 'bg-teal-400/50 text-black/60 cursor-not-allowed'
-                            }
-                        `}
+                    <h3 className="text-xl font-semibold text-white flex items-center gap-2 mb-6">
+                        <span className="text-2xl">✉️</span>
+                        Send a Message
+                    </h3>
+                    <form 
+                        action={`https://formspree.io/f/${import.meta.env.VITE_FORMSPREE_FORM_ID}`}
+                        method="POST"
+                        className="space-y-5"
                     >
-                        <span className={formStatus === 'sending' ? 'opacity-0' : 'opacity-100'}>
-                            {formStatus === 'sent' ? 'Message Sent!' : 'Send Message'}
-                        </span>
-                        {formStatus === 'sending' && (
-                            <div className="absolute inset-0 flex items-center justify-center">
-                                <div className="w-5 h-5 border-2 border-black/20 border-t-black/80 rounded-full animate-spin"></div>
-                            </div>
-                        )}
-                    </button>
-                </motion.form>
+                        <div className="space-y-2">
+                            <label htmlFor="email" className="block text-white/80 font-medium">Email</label>
+                            <input
+                                type="email"
+                                id="email"
+                                name="email"
+                                required
+                                className="w-full px-4 py-3 rounded-lg bg-base-300/50 border border-teal-400/20 focus:border-teal-400/40 text-white/80 focus:outline-none transition-colors"
+                                placeholder="your@email.com"
+                            />
+                        </div>
+                        <div className="space-y-2">
+                            <label htmlFor="message" className="block text-white/80 font-medium">Message</label>
+                            <textarea
+                                id="message"
+                                name="message"
+                                rows={5}
+                                required
+                                className="w-full px-4 py-3 rounded-lg bg-base-300/50 border border-teal-400/20 focus:border-teal-400/40 text-white/80 focus:outline-none transition-colors resize-none"
+                                placeholder="Your message..."
+                            ></textarea>
+                        </div>
+                        <button
+                            type="submit"
+                            className="w-full px-6 py-3 rounded-lg font-medium transition-all bg-teal-400 hover:bg-teal-500 text-black/80 hover:text-black"
+                        >
+                            Send Message
+                        </button>
+                    </form>
+                </motion.div>
             </div>
         </div>
     );

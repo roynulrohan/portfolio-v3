@@ -10,41 +10,31 @@ interface Experience {
 
 const experiences: Experience[] = [
     {
-        title: 'Senior Full Stack Developer',
-        company: 'TechCorp Solutions',
-        period: '2021 - Present',
+        title: 'Freelance Full-Stack Developer',
+        company: 'Self-Employed',
+        period: 'Dec. 2020 - Present',
         description: [
-            'Led development of enterprise-scale web applications using React and Node.js',
-            'Mentored junior developers and conducted code reviews to maintain high code quality',
-            'Implemented CI/CD pipelines reducing deployment time by 40%',
-            'Architected microservices infrastructure serving 1M+ users'
+            'Delivered high-quality web and mobile applications through effective client communication and requirement analysis',
+            'Developed responsive web applications using Next.js, Vite React, and TypeScript, enhancing digital presence for multiple clients',
+            'Created engaging landing pages with optimized user experience using modern frontend technologies',
+            'Built robust RESTful APIs using Express.js and Spring Boot, ensuring seamless data flow between frontend and backend systems',
+            'Implemented cross-platform mobile solutions using React Native, expanding client reach to mobile users',
         ],
-        technologies: ['React', 'Node.js', 'TypeScript', 'AWS', 'Docker', 'MongoDB']
+        technologies: ['Next.js', 'React', 'TypeScript', 'React Native', 'Express.js', 'Spring Boot', 'HTML/CSS', 'PHP'],
     },
     {
-        title: 'Full Stack Developer',
-        company: 'Digital Innovations Inc',
-        period: '2019 - 2021',
+        title: 'Project Advisor',
+        company: 'Employment and Social Development Canada',
+        period: 'Jul. 2022 - March 2024',
         description: [
-            'Developed and maintained multiple client-facing applications',
-            'Optimized database queries improving application performance by 60%',
-            'Implemented real-time features using WebSocket technology',
-            'Collaborated with UX team to improve user experience'
+            'Led development initiatives within the Digital Transformation Services team of the Compensation Directorate',
+            'Architected and developed internal applications for compensation advisors, implementing diverse business calculators and automation tools',
+            'Engineered a user-friendly mail merge tool with GUI interface, optimizing mass email distribution for non-technical users',
+            'Conducted thorough stakeholder engagement to align project objectives and ensure successful delivery of solutions',
+            'Utilized modern tech stack including TypeScript, Python, Svelte, React.js, MySQL, Git, and Azure Cloud Services',
         ],
-        technologies: ['React', 'Python', 'Django', 'PostgreSQL', 'Redis', 'AWS']
+        technologies: ['TypeScript', 'Python', 'Svelte', 'React.js', 'MySQL', 'Git', 'Azure Cloud Services'],
     },
-    {
-        title: 'Software Engineering Intern',
-        company: 'StartUp Hub',
-        period: 'Summer 2019',
-        description: [
-            'Developed new features for company\'s main product',
-            'Created automated testing suite reducing QA time by 30%',
-            'Participated in agile development processes',
-            'Contributed to internal developer tools'
-        ],
-        technologies: ['JavaScript', 'React', 'Node.js', 'Express', 'MongoDB']
-    }
 ];
 
 const container = {
@@ -52,75 +42,69 @@ const container = {
     show: {
         opacity: 1,
         transition: {
-            staggerChildren: 0.2
-        }
-    }
+            staggerChildren: 0.2,
+        },
+    },
 };
 
 const item = {
     hidden: { opacity: 0, x: -20 },
-    show: { opacity: 1, x: 0 }
+    show: { opacity: 1, x: 0 },
 };
 
 export function ExperienceSection() {
     return (
-        <div className="space-y-8">
-            <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5 }}
-                className="space-y-4"
-            >
-                <h2 className="text-3xl font-bold text-white">Professional Experience</h2>
-                <p className="text-lg text-white/80 leading-relaxed">
-                    My journey through various roles has equipped me with a diverse skill set and 
-                    valuable experience in building scalable applications and leading development teams.
+        <div className='space-y-8'>
+            <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }} className='space-y-4'>
+                <h2 className='text-3xl font-bold text-white flex items-center gap-3'>
+                    <span className='text-teal-400 text-3xl'>{'{'}</span>
+                    Professional Experience
+                    <span className='text-teal-400 text-3xl'>{'}'}</span>
+                </h2>
+                <p className='text-lg text-white/80 leading-relaxed'>
+                    My professional journey combines government sector experience with freelance development work, demonstrating versatility in both structured
+                    enterprise environments and client-focused project delivery.
                 </p>
             </motion.div>
 
-            <motion.div
-                variants={container}
-                initial="hidden"
-                animate="show"
-                className="space-y-6"
-            >
+            <motion.div variants={container} initial='hidden' animate='show' className='space-y-6'>
                 {experiences.map((exp, index) => (
-                    <motion.div
-                        key={exp.title}
-                        variants={item}
-                        className="relative"
-                    >
-                        {/* Timeline connector */}
-                        {index !== experiences.length - 1 && (
-                            <div className="absolute left-8 top-[4.5rem] bottom-0 w-0.5 bg-teal-400/20" />
-                        )}
-                        
-                        <div className="bg-base-300/50 rounded-xl p-6 border border-teal-400/20 hover:border-teal-400/40 transition-all">
-                            <div className="flex flex-col md:flex-row md:items-center gap-4 mb-4">
-                                <div className="flex-1 space-y-1">
-                                    <h3 className="text-xl font-semibold text-white">{exp.title}</h3>
-                                    <p className="text-teal-400">{exp.company}</p>
+                    <motion.div key={exp.title} variants={item} className='relative'>
+                        <div className='bg-base-300/50 rounded-xl p-6 border border-teal-400/20 hover:border-teal-400/40 transition-all group'>
+                            <div className='flex flex-col md:flex-row md:items-start gap-4 mb-6'>
+                                <div className='flex-1 space-y-2'>
+                                    <div className='flex items-center gap-3'>
+                                        <span className='text-2xl'>{index === 0 ? '💼' : '🚀'}</span>
+                                        <h3 className='text-xl font-semibold text-white group-hover:text-teal-400 transition-colors'>{exp.title}</h3>
+                                    </div>
+                                    <p className='text-teal-400 font-medium'>{exp.company}</p>
                                 </div>
-                                <div className="inline-flex px-3 py-1 rounded-full bg-teal-400/10 text-teal-400 text-sm">
+                                <div className='md:self-start px-3 py-1.5 rounded-full bg-teal-400/10 text-teal-400 text-sm font-medium border border-teal-400/20'>
                                     {exp.period}
                                 </div>
                             </div>
 
-                            <ul className="list-disc list-inside space-y-2 text-white/80 mb-4">
-                                {exp.description.map((desc, i) => (
-                                    <li key={i}>{desc}</li>
-                                ))}
-                            </ul>
+                            <div className='space-y-6'>
+                                <ul className='space-y-3'>
+                                    {exp.description.map((desc, i) => (
+                                        <li key={i} className='flex items-start gap-3 text-white/80'>
+                                            <span className='text-teal-400 text-sm mt-1.5'>▹</span>
+                                            <span className='flex-1'>{desc}</span>
+                                        </li>
+                                    ))}
+                                </ul>
 
-                            <div className="flex flex-wrap gap-2">
-                                {exp.technologies.map((tech) => (
-                                    <span
-                                        key={tech}
-                                        className="px-3 py-1 bg-base-300/50 text-white/60 rounded-full text-sm border border-teal-400/20"
-                                    >
-                                        {tech}
-                                    </span>
-                                ))}
+                                <div className='pt-2'>
+                                    <div className='flex flex-wrap gap-2'>
+                                        {exp.technologies.map((tech) => (
+                                            <span
+                                                key={tech}
+                                                className='px-3 py-1 bg-base-300/70 text-white/70 hover:text-teal-400 rounded-lg text-sm border border-teal-400/20 hover:border-teal-400/40 transition-all'>
+                                                {tech}
+                                            </span>
+                                        ))}
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </motion.div>
@@ -128,4 +112,4 @@ export function ExperienceSection() {
             </motion.div>
         </div>
     );
-} 
+}
