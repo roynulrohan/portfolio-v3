@@ -3,7 +3,7 @@ import { createContext, useContext, useEffect, useState } from 'react';
 // Theme mapping for DaisyUI themes
 const THEME_MAP = {
     light: 'emerald', // Change this to any light theme you want
-    dark: 'dark'      // Change this to any dark theme you want
+    dark: 'forest'      // Change this to any dark theme you want
 } as const;
 
 type Theme = 'light' | 'dark';
