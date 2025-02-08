@@ -78,10 +78,10 @@ export function AboutSection() {
             {/* Introduction */}
             <motion.div className='space-y-6' initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }}>
                 <div className='flex items-center gap-3'>
-                    <h2 className='text-3xl font-bold text-white'>
-                        <span className='text-teal-400'>&lt;</span>
+                    <h2 className='text-3xl font-bold text-white flex items-center gap-3'>
+                        <span className='text-teal-400 text-3xl'>{'{'}</span>
                         About Me
-                        <span className='text-teal-400'>/&gt;</span>
+                        <span className='text-teal-400 text-3xl'>{'}'}</span>
                     </h2>
                 </div>
                 <div className='prose prose-invert prose-teal max-w-none'>

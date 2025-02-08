@@ -168,7 +168,7 @@ function Index() {
 
                 {/* Content Section */}
                 <section className='relative px-4'>
-                    <div className='max-w-7xl mx-auto -mt-32'>
+                    <div className='max-w-[90rem] mx-auto -mt-32'>
                         <TabView tabs={tabs} selectedIndex={selectedTabIndex} onChange={setSelectedTabIndex} className='fade-in-up w-full' />
                     </div>
                 </section>

@@ -9,14 +9,14 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        sans: ['Roboto Mono', 'monospace'],
-        mono: ['Roboto Mono', 'monospace'],
+        sans: ['Space Grotesk', 'sans-serif'],
       },
     },
   },
   plugins: [daisyui],
   daisyui: {
-    themes: ["emerald", "dark", "sunset", "forest"],
+    themes: ["dark"],
+    darkTheme: "dark",
   },
 }
 

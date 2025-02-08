@@ -13,6 +13,7 @@
     "@headlessui/react": "^2.2.0",
     "@tanstack/react-router": "^1.99.13",
     "framer-motion": "^12.4.1",
+    "lucide-react": "^0.475.0",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "react-tsparticles": "^2.12.2",
