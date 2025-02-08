@@ -1,5 +1,6 @@
 import { createFileRoute } from '@tanstack/react-router';
 import AnimatedLetter from '../components/AnimatedLetter';
+
 export const Route = createFileRoute('/')({
     component: Index,
 });
@@ -10,40 +11,48 @@ const titleMessage = 'a Software Developer';
 
 function Index() {
     return (
-        <div className='min-h-screen bg-base-100'>
+        <div className='min-h-screen bg-base-100 relative overflow-hidden'>
             {/* Hero Section */}
-            <section id='main' className='flex flex-column justify-center items-center p-5 h-screen'>
-                <div className='p-3 flex flex-col space-y-7 items-center w-full'>
-                    <div className='text-nowrap text-center text-base-content font-light tracking-tighter p-4'>
-                        <h1 className='flex sm:text-4xl xs:text-3xl text-2xl justify-center'>
-                            {helloMessage.split('').map((letter, index) => {
-                                return letter !== ' ' ? (
-                                    <AnimatedLetter letter={letter} animation='rubberBand' key={`${helloMessage} - ${index}`} />
-                                ) : (
-                                    <span key={`${helloMessage} - ${index}`}>&nbsp;</span>
-                                );
-                            })}
+            <section id='main' className='relative flex flex-col justify-center items-center p-5 min-h-screen'>
+                <div className='p-3 flex flex-col space-y-7 items-center w-full backdrop-blur-sm'>
+                    <div className='text-nowrap text-center font-light tracking-tighter p-4 relative'>
+                        <h1 className='flex sm:text-4xl xs:text-3xl text-2xl justify-center mb-4'>
+                            {helloMessage
+                                .split('')
+                                .map((letter, index) =>
+                                    letter !== ' ' ? (
+                                        <AnimatedLetter letter={letter} animation='rubberBand' key={`${helloMessage}-${index}`} />
+                                    ) : (
+                                        <span key={`${helloMessage}-${index}`}>&nbsp;</span>
+                                    )
+                                )}
                         </h1>
-                        <h1 className='flex md:text-7xl sm:text-6xl text-4xl justify-center mb-5'>
-                            {fullName.split('').map((letter, index) => {
-                                return letter !== ' ' ? (
-                                    <AnimatedLetter letter={letter} animation='rubberBand' key={`${fullName} - ${index}`} />
-                                ) : (
-                                    <span key={`${helloMessage} - ${index}`}>&nbsp;</span>
-                                );
-                            })}
+                        <h1 className='flex md:text-7xl sm:text-6xl text-4xl justify-center mb-5 text-glow relative'>
+                            {fullName
+                                .split('')
+                                .map((letter, index) =>
+                                    letter !== ' ' ? (
+                                        <AnimatedLetter letter={letter} animation='rubberBand' key={`${fullName}-${index}`} />
+                                    ) : (
+                                        <span key={`${fullName}-${index}`}>&nbsp;</span>
+                                    )
+                                )}
                         </h1>
-                        <h1 className='flex md:text-4xl sm:text-2xl text-lg justify-center'>
-                            {titleMessage.split('').map((letter, index) => {
-                                return letter !== ' ' ? (
-                                    <AnimatedLetter letter={letter} animation='rubberBand' key={`${titleMessage} - ${index}`} />
-                                ) : (
-                                    <span key={`${helloMessage} - ${index}`}>&nbsp;</span>
-                                );
-                            })}
+                        <h1 className='flex md:text-4xl sm:text-2xl text-lg justify-center relative'>
+                            {titleMessage
+                                .split('')
+                                .map((letter, index) =>
+                                    letter !== ' ' ? (
+                                        <AnimatedLetter letter={letter} animation='rubberBand' key={`${titleMessage}-${index}`} />
+                                    ) : (
+                                        <span key={`${titleMessage}-${index}`}>&nbsp;</span>
+                                    )
+                                )}
                         </h1>
                     </div>
-                    <div className='w-48 rounded-lg bg-base-100 px-5 shadow-lg flex'>
+
+                    {/* Social Links */}
+                    <div className='w-48 rounded-lg bg-base-100/50 backdrop-blur-lg px-5 shadow-lg flex hover:glow transition-all duration-300'>
                         <div className='p-4 transition-all w-36 hover:scale-110'>
                             <a title='GitHub' href='https://github.com/roynulrohan' rel='noreferrer' target='_blank' className='text-dark'>
                                 <svg xmlns='http://www.w3.org/2000/svg' width='100%' height='100%' viewBox='0 0 24 24' fill='currentColor'>

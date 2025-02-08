@@ -1,13 +1,11 @@
 import { createRootRoute, Outlet } from '@tanstack/react-router';
-import { ThemeToggle } from '../components/ThemeToggle';
+import { Navbar } from '../components/Navbar';
 
 export const Route = createRootRoute({
     component: () => (
         <>
-            <ThemeToggle />
-            <main>
-                <Outlet />
-            </main>
+            <Navbar />
+            <Outlet />
         </>
     ),
 });
