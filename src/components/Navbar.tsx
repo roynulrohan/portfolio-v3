@@ -10,7 +10,7 @@ export function Navbar() {
                     {/* Logo/Name */}
                     <a href='#main' className='text-lg font-medium hover:text-white/90 transition-colors group'>
                         <span className='text-teal-400 group-hover:text-teal-500 transition-colors'>&lt;</span>
-                        <span className='text-white/80'>rohan</span>
+                        <span className='text-white/80'>roynul.rohan</span>
                         <span className='text-teal-400 group-hover:text-teal-500 transition-colors'>/&gt;</span>
                     </a>
 

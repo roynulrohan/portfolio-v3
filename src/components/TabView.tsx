@@ -37,21 +37,23 @@ export function TabView({ tabs, selectedIndex, onChange, className = '' }: TabVi
                                     {({ selected }) => (
                                         <button
                                             className={twMerge(
-                                                'relative px-6 py-2.5 text-sm font-medium rounded-t-2xl',
-                                                'flex items-center gap-2 w-[140px] justify-center',
-                                                'transition-colors duration-200 border-t border-l border-r border-teal-400/0',
-                                                'text-white/60 bg-base-300/30 hover:text-white/80 hover:bg-base-300/50',
+                                                'relative px-8 py-4 text-base font-medium rounded-t-2xl',
+                                                'flex items-center gap-2.5 w-[160px] justify-center',
+                                                'transition-colors duration-200',
+                                                'text-white/60 bg-base-300/30',
+                                                'hover:text-white/80 hover:bg-base-300/50',
                                                 'focus:outline-none',
-                                                selected && 'text-white bg-base-300/50 border-teal-400/30 '
+                                                'border-t border-l border-r border-teal-400/0',
+                                                selected && ['text-white', 'bg-base-300/50', 'border-t border-l border-r border-teal-400/50']
                                             )}>
-                                            {tab.icon && <span className='text-teal-400'>{tab.icon}</span>}
-                                            {tab.label}
-                                            {selected && (
-                                                <>
-                                                    {/* Bottom border cover */}
-                                                    <div className='absolute -bottom-[1px] left-0 right-0 h-[1px] bg-base-300/40' />
-                                                </>
+                                            {tab.icon && (
+                                                <span
+                                                    className={twMerge('text-xl transition-colors duration-200', selected ? 'text-teal-400' : 'text-white/60')}>
+                                                    {tab.icon}
+                                                </span>
                                             )}
+                                            {tab.label}
+                                            {selected && <div className='absolute -bottom-[1px] left-0 right-0 h-[1px] bg-base-300/50' />}
                                         </button>
                                     )}
                                 </Tab>
@@ -62,18 +64,21 @@ export function TabView({ tabs, selectedIndex, onChange, className = '' }: TabVi
                     {/* Content Area */}
                     <div className='border-t border-teal-400/30 bg-base-300/40'>
                         <Tab.Panels>
-                            <AnimatePresence mode='wait'>
+                            <AnimatePresence mode='wait' initial={false}>
                                 {tabs.map(
                                     (tab, idx) =>
                                         selectedIndex === idx && (
                                             <Tab.Panel
                                                 key={tab.id}
                                                 as={motion.div}
-                                                initial={{ opacity: 0 }}
-                                                animate={{ opacity: 1 }}
-                                                exit={{ opacity: 0 }}
-                                                transition={{ duration: 0.2 }}
-                                                className='p-6'
+                                                initial={{ opacity: 0, y: 10 }}
+                                                animate={{ opacity: 1, y: 0 }}
+                                                exit={{ opacity: 0, y: -10 }}
+                                                transition={{
+                                                    duration: 0.2,
+                                                    ease: 'easeInOut',
+                                                }}
+                                                className='p-10'
                                                 static>
                                                 {tab.content}
                                             </Tab.Panel>

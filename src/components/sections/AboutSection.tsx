@@ -1,4 +1,5 @@
 import { motion } from 'framer-motion';
+import { useMemo } from 'react';
 
 interface SkillCategory {
     name: string;
@@ -24,7 +25,7 @@ const skillCategories: SkillCategory[] = [
     },
     {
         name: 'Mobile Development',
-        icon: '🗄️',
+        icon: '📱',
         skills: ['React Native', 'Flutter', 'Expo', 'Swift', 'SwiftUI'],
     },
     {
@@ -63,20 +64,38 @@ const container = {
         opacity: 1,
         transition: {
             staggerChildren: 0.1,
+            delayChildren: 0.1,
+            duration: 0.3,
         },
     },
 };
 
 const item = {
     hidden: { opacity: 0, y: 20 },
-    show: { opacity: 1, y: 0 },
+    show: { 
+        opacity: 1, 
+        y: 0,
+        transition: {
+            duration: 0.3,
+        }
+    },
 };
 
 export function AboutSection() {
-    return (
-        <div className='space-y-12'>
-            {/* Introduction */}
-            <motion.div className='space-y-6' initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }}>
+    // Memoize static data
+    const memoizedHighlights = useMemo(() => highlights, []);
+    const memoizedSkillCategories = useMemo(() => skillCategories, []);
+
+    // Memoize animation variants
+    const memoizedContainer = useMemo(() => container, []);
+    const memoizedItem = useMemo(() => item, []);
+
+    // Memoize introduction section
+    const introductionSection = useMemo(
+        () => (
+            <motion.div
+                variants={memoizedItem}
+                className='space-y-6'>
                 <div className='flex items-center gap-3'>
                     <h2 className='text-3xl font-bold text-white flex items-center gap-3'>
                         <span className='text-teal-400 text-3xl'>{'{'}</span>
@@ -98,13 +117,19 @@ export function AboutSection() {
                     </p>
                 </div>
             </motion.div>
+        ),
+        []
+    );
 
-            {/* Key Highlights */}
-            <motion.div variants={container} initial='hidden' animate='show' className='grid grid-cols-1 md:grid-cols-3 gap-6'>
-                {highlights.map((highlight) => (
+    // Memoize highlights section
+    const highlightsSection = useMemo(
+        () => (
+            <motion.div
+                variants={memoizedItem}
+                className='grid grid-cols-1 md:grid-cols-3 gap-6'>
+                {memoizedHighlights.map((highlight) => (
                     <motion.div
                         key={highlight.title}
-                        variants={item}
                         className='bg-base-300/50 rounded-xl p-6 border border-teal-400/20 hover:border-teal-400/40 transition-all group'>
                         <div className='flex items-center gap-3 mb-3'>
                             <span className='text-2xl'>{highlight.icon}</span>
@@ -114,19 +139,25 @@ export function AboutSection() {
                     </motion.div>
                 ))}
             </motion.div>
+        ),
+        [memoizedHighlights, memoizedItem]
+    );
 
-            {/* Technical Skills */}
-            <motion.div variants={container} initial='hidden' animate='show' className='space-y-6'>
+    // Memoize skills section
+    const skillsSection = useMemo(
+        () => (
+            <motion.div
+                variants={memoizedItem}
+                className='space-y-6'>
                 <h3 className='text-2xl font-semibold text-white flex items-center gap-3'>
                     <span className='text-teal-400 text-3xl'>{'{'}</span>
                     Technical Arsenal
                     <span className='text-teal-400 text-3xl'>{'}'}</span>
                 </h3>
                 <div className='grid grid-cols-1 md:grid-cols-2 gap-4'>
-                    {skillCategories.map((category) => (
+                    {memoizedSkillCategories.map((category) => (
                         <motion.div
                             key={category.name}
-                            variants={item}
                             className='bg-base-300/50 rounded-xl p-5 border border-teal-400/20 hover:border-teal-400/40 transition-all group'>
                             <div className='flex items-center gap-3 mb-3'>
                                 <span className='text-2xl'>{category.icon}</span>
@@ -145,11 +176,18 @@ export function AboutSection() {
                     ))}
                 </div>
             </motion.div>
+        ),
+        [memoizedSkillCategories, memoizedItem]
+    );
 
-            {/* Education & Current Focus */}
-            <motion.div className='space-y-6' variants={container} initial='hidden' animate='show'>
+    // Memoize education and focus section
+    const educationAndFocusSection = useMemo(
+        () => (
+            <motion.div
+                variants={memoizedItem}
+                className='space-y-6'>
                 {/* Education */}
-                <motion.div variants={item}>
+                <motion.div>
                     <div className='space-y-6'>
                         <h3 className='text-2xl font-semibold text-white flex items-center gap-3'>
                             <span className='text-teal-400 text-3xl'>{'{'}</span>
@@ -157,13 +195,15 @@ export function AboutSection() {
                             <span className='text-teal-400 text-3xl'>{'}'}</span>
                         </h3>
                         <div className='space-y-4'>
-                            <motion.div className='bg-base-300/50 rounded-xl p-6 border border-teal-400/20 hover:border-teal-400/40 transition-all group'>
+                            <div className='bg-base-300/50 rounded-xl p-6 border border-teal-400/20 hover:border-teal-400/40 transition-all group'>
                                 <div className='flex flex-col gap-4'>
                                     <div className='flex items-start justify-between gap-4'>
                                         <div className='space-y-2'>
                                             <div className='flex items-center gap-2'>
                                                 <span>🎓</span>
-                                                <h4 className='text-xl font-medium text-white group-hover:text-teal-400 transition-colors'>College Diploma, Computer Programming</h4>
+                                                <h4 className='text-xl font-medium text-white group-hover:text-teal-400 transition-colors'>
+                                                    College Diploma, Computer Programming
+                                                </h4>
                                             </div>
                                             <p className='text-teal-400 font-medium'>Algonquin College of Applied Arts and Technology</p>
                                             <p className='text-white/70 text-sm mt-2 max-w-2xl'>
@@ -179,15 +219,17 @@ export function AboutSection() {
                                         </div>
                                     </div>
                                 </div>
-                            </motion.div>
+                            </div>
 
-                            <motion.div className='bg-base-300/50 rounded-xl p-6 border border-teal-400/20 hover:border-teal-400/40 transition-all group'>
+                            <div className='bg-base-300/50 rounded-xl p-6 border border-teal-400/20 hover:border-teal-400/40 transition-all group'>
                                 <div className='flex flex-col gap-4'>
                                     <div className='flex items-start justify-between gap-4'>
                                         <div className='space-y-2'>
                                             <div className='flex items-center gap-2'>
                                                 <span>💡</span>
-                                                <h4 className='text-xl font-medium text-white group-hover:text-teal-400 transition-colors'>Self-Taught Developer</h4>
+                                                <h4 className='text-xl font-medium text-white group-hover:text-teal-400 transition-colors'>
+                                                    Self-Taught Developer
+                                                </h4>
                                             </div>
                                             <p className='text-teal-400 font-medium'>Online Resources & Personal Projects</p>
                                             <p className='text-white/70 text-sm mt-2 max-w-2xl'>
@@ -203,13 +245,14 @@ export function AboutSection() {
                                         </div>
                                     </div>
                                 </div>
-                            </motion.div>
+                            </div>
                         </div>
                     </div>
                 </motion.div>
 
                 {/* Current Focus */}
-                <motion.div variants={item} className='bg-base-300/50 rounded-xl p-6 border border-teal-400/20 hover:border-teal-400/40 transition-all group'>
+                <motion.div
+                    className='bg-base-300/50 rounded-xl p-6 border border-teal-400/20 hover:border-teal-400/40 transition-all group'>
                     <h4 className='text-xl font-medium text-white mb-4 flex items-center gap-2'>
                         <span>🎯</span> Current Focus
                     </h4>
@@ -253,6 +296,21 @@ export function AboutSection() {
                     </div>
                 </motion.div>
             </motion.div>
-        </div>
+        ),
+        []
+    );
+
+    return (
+        <motion.div 
+            variants={memoizedContainer}
+            initial="hidden"
+            animate="show"
+            className='space-y-12'
+        >
+            {introductionSection}
+            {highlightsSection}
+            {skillsSection}
+            {educationAndFocusSection}
+        </motion.div>
     );
 }

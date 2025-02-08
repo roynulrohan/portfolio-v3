@@ -94,25 +94,25 @@ function Index() {
                 <section id='main' className='relative flex flex-col justify-center items-center md:items-start p-3 md:p-5 min-h-screen'>
                     <div className='p-2 md:p-5 flex flex-col space-y-2 w-full max-w-5xl mx-auto md:ml-[15%] rounded-xl'>
                         <div className='text-center md:text-left space-y-6 md:space-y-8'>
-                            <span className='flex flex-wrap justify-center md:justify-start text-base md:text-lg tracking-[0.3em] text-teal-400 font-medium fade-in-up'>
+                            <span className='flex flex-wrap justify-center md:justify-start text-base md:text-lg tracking-[0.3em] text-teal-400 font-medium opacity-0 animate-[fadeInUp_0.5s_ease-out_0.1s_forwards]'>
                                 {getAnimatedRoleMessage}
                             </span>
 
                             <div className='space-y-3 md:space-y-4'>
-                                <h1 className='flex flex-wrap justify-center md:justify-start text-4xl sm:text-7xl md:text-8xl text-white font-bold tracking-tight leading-[1.1] max-w-4xl fade-in-up delay-200'>
+                                <h1 className='flex flex-wrap justify-center md:justify-start text-4xl sm:text-7xl md:text-8xl text-white font-bold tracking-tight leading-[1.1] max-w-4xl opacity-0 animate-[fadeInUp_0.5s_ease-out_0.3s_forwards]'>
                                     {getAnimatedTitle}
                                 </h1>
-                                <p className='flex flex-wrap justify-center md:justify-start text-xl sm:text-3xl md:text-4xl text-teal-400/90 font-medium tracking-tight leading-relaxed fade-in-up delay-400'>
+                                <p className='flex flex-wrap justify-center md:justify-start text-xl sm:text-3xl md:text-4xl text-teal-400/90 font-medium tracking-tight leading-relaxed opacity-0 animate-[fadeInUp_0.5s_ease-out_0.5s_forwards]'>
                                     {getAnimatedTagline}
                                 </p>
                             </div>
 
-                            <div className='space-y-6 fade-in-up delay-600'>
+                            <div className='space-y-6 opacity-0 animate-[fadeInUp_0.5s_ease-out_0.7s_forwards]'>
                                 <p className='text-lg md:text-xl text-white/80 max-w-2xl leading-relaxed text-center md:text-left'>{description}</p>
                             </div>
 
                             {/* Social Links */}
-                            <div className='flex flex-wrap justify-center md:justify-start gap-3 mt-8 md:mt-12 items-center fade-in-up delay-600'>
+                            <div className='flex flex-wrap justify-center md:justify-start gap-3 mt-8 md:mt-12 items-center opacity-0 animate-[fadeInUp_0.5s_ease-out_0.9s_forwards]'>
                                 <a
                                     title='GitHub'
                                     href='https://github.com/roynulrohan'
