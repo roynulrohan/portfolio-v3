@@ -2,6 +2,7 @@ import { RouterProvider, createRouter } from '@tanstack/react-router';
 import { StrictMode } from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
+import { Analytics } from "@vercel/analytics/react"
 
 // Import the generated route tree
 import { routeTree } from './routeTree.gen';
@@ -37,6 +38,7 @@ if (!rootElement.innerHTML) {
     router.load().then(() => {
         root.render(
             <StrictMode>
+                <Analytics />
                 <RouterProvider router={router} />
             </StrictMode>
         );
