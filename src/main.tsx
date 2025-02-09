@@ -2,10 +2,12 @@ import { RouterProvider, createRouter } from '@tanstack/react-router';
 import { StrictMode } from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
-import { Analytics } from "@vercel/analytics/react"
 
 // Import the generated route tree
 import { routeTree } from './routeTree.gen';
+
+// Import Firebase analytics
+import './lib/firebase';
 
 // Create a new router instance
 const router = createRouter({ 
@@ -38,7 +40,6 @@ if (!rootElement.innerHTML) {
     router.load().then(() => {
         root.render(
             <StrictMode>
-                <Analytics />
                 <RouterProvider router={router} />
             </StrictMode>
         );
