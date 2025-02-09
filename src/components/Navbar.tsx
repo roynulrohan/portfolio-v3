@@ -9,7 +9,7 @@ export function Navbar() {
                     <motion.a
                         href='#main'
                         className='text-xl font-medium transition-all duration-300 group hover:scale-105'
-                        initial={{ opacity: 0, y: -20 }}
+                        initial={{ opacity: 1, y: 0 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.5 }}>
                         <div className='flex items-center gap-1.5'>
@@ -44,7 +44,7 @@ export function Navbar() {
                     {/* Status Indicator */}
                     <motion.div
                         className='hidden md:flex items-center gap-2 bg-base-300/50 backdrop-blur-sm border border-teal-400/20 px-5 py-2 rounded-full'
-                        initial={{ opacity: 0, x: 20 }}
+                        initial={{ opacity: 1, x: 0 }}
                         animate={{ opacity: 1, x: 0 }}
                         transition={{ duration: 0.5, delay: 0.3 }}
                         whileHover={{ scale: 1.05 }}>
