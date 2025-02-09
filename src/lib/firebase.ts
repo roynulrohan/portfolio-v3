@@ -1,5 +1,5 @@
 import { initializeApp } from 'firebase/app';
-import { getAnalytics } from 'firebase/analytics';
+import { getAnalytics, logEvent } from 'firebase/analytics';
 
 const firebaseConfig = {
     apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
@@ -15,4 +15,28 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 
 // Initialize Analytics
-export const analytics = getAnalytics(app); 
+export const analytics = getAnalytics(app);
+
+// Track page views
+export const trackPageView = (pageName: string) => {
+    logEvent(analytics, 'page_view', {
+        page_title: pageName,
+        page_location: window.location.href,
+        page_path: window.location.pathname
+    });
+};
+
+// Track section views
+export const trackSectionView = (sectionName: string) => {
+    logEvent(analytics, 'section_view', {
+        section_name: sectionName
+    });
+};
+
+// Track external link clicks
+export const trackExternalLinkClick = (linkName: string, url: string) => {
+    logEvent(analytics, 'external_link_click', {
+        link_name: linkName,
+        link_url: url
+    });
+}; 

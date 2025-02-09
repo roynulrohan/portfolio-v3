@@ -1,9 +1,35 @@
-import { createRootRoute, Outlet } from '@tanstack/react-router';
+import { createRootRoute, Outlet, useRouter } from '@tanstack/react-router';
 import { Navbar } from '../components/Navbar';
-import { Suspense } from 'react';
+import { Suspense, useEffect } from 'react';
+import { trackPageView } from '../lib/firebase';
 
 export const Route = createRootRoute({
-    component: () => (
+    component: RootComponent,
+    notFoundComponent: () => {
+        window.location.href = '/404';
+        return null;
+    }
+});
+
+function RootComponent() {
+    const router = useRouter();
+
+    // Track page views
+    useEffect(() => {
+        const handleRouteChange = () => {
+            const pageName = window.location.pathname === '/' ? 'Home' : window.location.pathname.slice(1);
+            trackPageView(pageName);
+        };
+
+        // Track initial page view
+        handleRouteChange();
+
+        // Listen for route changes
+        const unsubscribe = router.subscribe('onBeforeLoad', handleRouteChange);
+        return () => unsubscribe();
+    }, [router]);
+
+    return (
         <Suspense fallback={
             <div className='fixed inset-0 bg-gradient-to-br from-base-300 via-base-200 to-base-300'>
                 <div className='absolute inset-0 overflow-hidden'>
@@ -15,9 +41,5 @@ export const Route = createRootRoute({
             <Navbar />
             <Outlet />
         </Suspense>
-    ),
-    notFoundComponent: () => {
-        window.location.href = '/404';
-        return null;
-    }
-});
+    );
+}
