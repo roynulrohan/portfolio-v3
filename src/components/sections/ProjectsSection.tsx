@@ -252,7 +252,7 @@ export function ProjectsSection() {
                     <span className='text-teal-400 text-3xl'>{'}'}</span>
                 </h2>
                 <p className='text-lg text-white/80 leading-relaxed'>
-                    Here are some of my recent projects that showcase my technical skills and problem-solving abilities.
+                    Here are some of my recent projects that showcase my technical expertise and innovative approach to software development.
                 </p>
             </motion.div>
         ),

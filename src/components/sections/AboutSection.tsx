@@ -9,11 +9,6 @@ interface SkillCategory {
 
 const skillCategories: SkillCategory[] = [
     {
-        name: 'Programming Languages & Databases',
-        icon: '💻',
-        skills: ['TypeScript', 'Java', 'Python'],
-    },
-    {
         name: 'Frontend Development',
         icon: '🎨',
         skills: ['React', 'Next.js', 'Svelte', 'React Native', 'Tailwind CSS', 'Redux', 'Zod', 'React Query', 'React Hook Form'],
@@ -22,6 +17,11 @@ const skillCategories: SkillCategory[] = [
         name: 'Backend & Databases',
         icon: '⚙️',
         skills: ['Node.js', 'Bun', 'Express', 'Spring Boot', 'Apollo GraphQL API', 'REST API', 'PostgreSQL', 'MySQL', 'MongoDB', 'Redis'],
+    },
+    {
+        name: 'Programming Languages',
+        icon: '💻',
+        skills: ['TypeScript', 'Java', 'Python'],
     },
     {
         name: 'Mobile Development',
@@ -48,13 +48,8 @@ const highlights = [
     },
     {
         title: 'Mobile Developer',
-        description: 'Building cross-platform mobile applications using React Native and modern mobile frameworks.',
+        description: 'Crafting intuitive cross-platform mobile experiences with modern frameworks and native solutions.',
         icon: '📱',
-    },
-    {
-        title: 'Problem Solver',
-        description: 'Strong debugging skills with a knack for tracking down and resolving complex technical issues.',
-        icon: '🔍',
     },
 ];
 
@@ -72,12 +67,12 @@ const container = {
 
 const item = {
     hidden: { opacity: 0, y: 20 },
-    show: { 
-        opacity: 1, 
+    show: {
+        opacity: 1,
         y: 0,
         transition: {
             duration: 0.3,
-        }
+        },
     },
 };
 
@@ -93,9 +88,7 @@ export function AboutSection() {
     // Memoize introduction section
     const introductionSection = useMemo(
         () => (
-            <motion.div
-                variants={memoizedItem}
-                className='space-y-6'>
+            <motion.div variants={memoizedItem} className='space-y-6'>
                 <div className='flex items-center gap-3'>
                     <h2 className='text-3xl font-bold text-white flex items-center gap-3'>
                         <span className='text-teal-400 text-3xl'>{'{'}</span>
@@ -105,11 +98,13 @@ export function AboutSection() {
                 </div>
                 <div className='prose prose-invert prose-teal max-w-none'>
                     <p className='text-lg text-white/80 leading-relaxed'>
-                        Full-stack developer with a passion for crafting efficient, user-centric solutions. My core strength lies in web development, but I thrive in exploring and mastering various domains of software development.
+                        Full-stack developer with a passion for crafting efficient, user-centric solutions. My core strength lies in web development, but I
+                        thrive in exploring and mastering various domains of software development.
                     </p>
                     <br />
                     <p className='text-lg text-white/80 leading-relaxed'>
-                        Driven by a love for problem-solving and continuous learning, I enjoy tackling complex challenges and staying at the forefront of technology. This mindset enables me to bridge technical gaps and deliver innovative solutions that make a real impact.
+                        Driven by curiosity and a commitment to excellence, I enjoy transforming complex requirements into elegant, scalable applications. This
+                        mindset enables me to create innovative solutions that deliver real value to users.
                     </p>
                 </div>
             </motion.div>
@@ -120,31 +115,119 @@ export function AboutSection() {
     // Memoize highlights section
     const highlightsSection = useMemo(
         () => (
-            <motion.div
-                variants={memoizedItem}
-                className='grid grid-cols-1 md:grid-cols-3 gap-6'>
-                {memoizedHighlights.map((highlight) => (
-                    <motion.div
-                        key={highlight.title}
-                        className='bg-base-300/50 rounded-xl p-6 border border-teal-400/20 hover:border-teal-400/40 transition-all group'>
-                        <div className='flex items-center gap-3 mb-3'>
-                            <span className='text-2xl'>{highlight.icon}</span>
-                            <h3 className='text-xl font-medium text-white group-hover:text-teal-400 transition-colors'>{highlight.title}</h3>
+            <motion.div variants={memoizedItem} className='grid grid-cols-1 md:grid-cols-2 gap-8 h-[400px]'>
+                {/* Full Stack Developer Card */}
+                <motion.div className='relative bg-base-300/50 rounded-xl border border-teal-400/20 hover:border-teal-400/40 transition-all group overflow-hidden'>
+                    {/* Browser-like header */}
+                    <div className='px-4 py-2 border-b border-teal-400/20 bg-base-300/70 flex items-center gap-2'>
+                        <div className='flex gap-1.5'>
+                            <div className='w-2.5 h-2.5 rounded-full bg-red-400/80'></div>
+                            <div className='w-2.5 h-2.5 rounded-full bg-yellow-400/80'></div>
+                            <div className='w-2.5 h-2.5 rounded-full bg-green-400/80'></div>
                         </div>
-                        <p className='text-white/70'>{highlight.description}</p>
-                    </motion.div>
-                ))}
+                        <div className='flex-1 flex justify-center'>
+                            <div className='px-3 py-0.5 text-xs text-white bg-base-300/50 rounded-md border border-teal-400/20'>fullstack-developer.app</div>
+                        </div>
+                    </div>
+
+                    {/* Content area */}
+                    <div className='p-4 space-y-4'>
+                        {/* Navigation Bar */}
+                        <div className='flex items-center justify-between p-2 bg-base-300/30 rounded-lg border border-teal-400/20'>
+                            <div className='w-8 h-8 bg-teal-400/20 rounded-lg'></div>
+                            <div className='flex gap-3'>
+                                <div className='w-16 h-2 bg-teal-400/20 rounded-full'></div>
+                                <div className='w-16 h-2 bg-teal-400/20 rounded-full'></div>
+                                <div className='w-16 h-2 bg-teal-400/20 rounded-full'></div>
+                            </div>
+                        </div>
+
+                        {/* Hero Section with Text */}
+                        <div className='p-6 bg-base-300/30 rounded-lg border border-teal-400/20'>
+                            <h3 className='text-xl font-medium text-white group-hover:text-teal-400 transition-colors mb-2'>Full Stack Developer</h3>
+                            <p className='text-white/70 text-sm leading-relaxed'>
+                                Experienced in building complete web applications from frontend to backend deployment.
+                            </p>
+                        </div>
+
+                        {/* Three Column Section */}
+                        <div className='grid grid-cols-3 gap-3'>
+                            <div className='p-3 bg-base-300/30 rounded-lg border border-teal-400/20'>
+                                <div className='w-8 h-8 bg-teal-400/20 rounded-lg mb-2'></div>
+                                <div className='w-full h-2 bg-teal-400/20 rounded-full'></div>
+                            </div>
+                            <div className='p-3 bg-base-300/30 rounded-lg border border-teal-400/20'>
+                                <div className='w-8 h-8 bg-teal-400/20 rounded-lg mb-2'></div>
+                                <div className='w-full h-2 bg-teal-400/20 rounded-full'></div>
+                            </div>
+                            <div className='p-3 bg-base-300/30 rounded-lg border border-teal-400/20'>
+                                <div className='w-8 h-8 bg-teal-400/20 rounded-lg mb-2'></div>
+                                <div className='w-full h-2 bg-teal-400/20 rounded-full'></div>
+                            </div>
+                        </div>
+                    </div>
+                </motion.div>
+
+                {/* Mobile Developer Card */}
+                <motion.div className='relative bg-base-300/50 rounded-xl border border-teal-400/20 hover:border-teal-400/40 transition-all group overflow-hidden'>
+                    {/* Glow Effect */}
+                    <div
+                        className='absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2'
+                        style={{
+                            width: '600px',
+                            height: '600px',
+                            background: 'radial-gradient(circle, rgba(45, 212, 191, 0.2) 0%, rgba(45, 212, 191, 0) 70%)',
+                            filter: 'blur(24px)',
+                            transform: 'translate(-50%, -50%)',
+                            transition: 'all 0.3s ease-in-out',
+                        }}
+                    />
+
+                    {/* Phone frame */}
+                    <div className='absolute bg-base-300 top-10 left-1/2 -translate-x-1/2 w-[280px] h-[520px] border-8 border-primary-content rounded-[3rem] shadow-lg'>
+                        <div className='absolute top-0 left-1/2 -translate-x-1/2 w-24 h-6 bg-primary-content rounded-b-xl'></div>
+                    </div>
+
+                    {/* Content */}
+                    <div className='relative h-full p-6 pt-24 pb-12 flex flex-col items-center'>
+                        {/* App-like interface */}
+                        <div className='w-[240px] space-y-4'>
+                            {/* Header */}
+                            <div className='text-center space-y-2'>
+                                <h3 className='text-xl font-medium text-white group-hover:text-teal-400 transition-colors'>Mobile Developer</h3>
+                            </div>
+
+                            {/* App-like elements */}
+                            <div className='space-y-2'>
+                                <div className='p-3 bg-base-300/30 rounded-xl border border-teal-400/20'>
+                                    <div className='w-full h-2 bg-teal-400/20 rounded-full'></div>
+                                </div>
+                                <div className='grid grid-cols-2 gap-2'>
+                                    <div className='p-3 bg-base-300/30 rounded-xl border border-teal-400/20'>
+                                        <div className='w-full h-2 bg-teal-400/20 rounded-full'></div>
+                                    </div>
+                                    <div className='p-3 bg-base-300/30 rounded-xl border border-teal-400/20'>
+                                        <div className='w-full h-2 bg-teal-400/20 rounded-full'></div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            {/* Description */}
+                            <p className='text-white/70 text-sm text-center'>
+                                Crafting intuitive cross-platform mobile experiences with modern frameworks and native solutions.
+                            </p>
+                        </div>
+                    </div>
+                </motion.div>
             </motion.div>
         ),
-        [memoizedHighlights, memoizedItem]
+        [memoizedItem]
     );
 
     // Memoize skills section
     const skillsSection = useMemo(
         () => (
-            <motion.div
-                variants={memoizedItem}
-                className='space-y-6'>
+            <motion.div variants={memoizedItem} className='space-y-6'>
                 <h3 className='text-2xl font-semibold text-white flex items-center gap-3'>
                     <span className='text-teal-400 text-3xl'>{'{'}</span>
                     Technical Arsenal
@@ -179,9 +262,7 @@ export function AboutSection() {
     // Memoize education and focus section
     const educationAndFocusSection = useMemo(
         () => (
-            <motion.div
-                variants={memoizedItem}
-                className='space-y-6'>
+            <motion.div variants={memoizedItem} className='space-y-6'>
                 {/* Education */}
                 <motion.div>
                     <div className='space-y-6'>
@@ -245,77 +326,76 @@ export function AboutSection() {
                         </div>
                     </div>
                 </motion.div>
-
-                {/* Current Focus */}
-                <motion.div
-                    className='bg-base-300/50 rounded-xl p-6 border border-teal-400/20 hover:border-teal-400/40 transition-all group'>
-                    <h4 className='text-xl font-medium text-white mb-4 flex items-center gap-2'>
-                        <span>🎯</span> Current Focus
-                    </h4>
-                    <div className='grid grid-cols-1 md:grid-cols-2 gap-4'>
-                        <div className='space-y-2 p-3 bg-base-300/30 rounded-lg border border-teal-400/10 group-hover:border-teal-400/30 transition-all'>
-                            <h5 className='text-white/90 font-medium flex items-center gap-2'>
-                                <span className='text-teal-400 text-lg'>▹</span>
-                                Backend Development
-                            </h5>
-                            <p className='text-white/60 text-sm pl-6'>
-                                Strengthening server-side expertise with advanced design patterns and microservices architecture.
-                            </p>
-                        </div>
-                        <div className='space-y-2 p-3 bg-base-300/30 rounded-lg border border-teal-400/10 group-hover:border-teal-400/30 transition-all'>
-                            <h5 className='text-white/90 font-medium flex items-center gap-2'>
-                                <span className='text-teal-400 text-lg'>▹</span>
-                                DevOps & Infrastructure
-                            </h5>
-                            <p className='text-white/60 text-sm pl-6'>
-                                Expanding knowledge in CI/CD pipelines, container orchestration, and cloud infrastructure management.
-                            </p>
-                        </div>
-                        <div className='space-y-2 p-3 bg-base-300/30 rounded-lg border border-teal-400/10 group-hover:border-teal-400/30 transition-all'>
-                            <h5 className='text-white/90 font-medium flex items-center gap-2'>
-                                <span className='text-teal-400 text-lg'>▹</span>
-                                Mobile Development
-                            </h5>
-                            <p className='text-white/60 text-sm pl-6'>
-                                Exploring native mobile app development with Swift and SwiftUI.
-                            </p>
-                        </div>
-                        <div className='space-y-2 p-3 bg-base-300/30 rounded-lg border border-teal-400/10 group-hover:border-teal-400/30 transition-all'>
-                            <h5 className='text-white/90 font-medium flex items-center gap-2'>
-                                <span className='text-teal-400 text-lg'>▹</span>
-                                IT Security
-                            </h5>
-                            <p className='text-white/60 text-sm pl-6'>
-                                Learning about cybersecurity practices, network security, and IT infrastructure protection.
-                            </p>
-                        </div>
-                    </div>
-                </motion.div>
             </motion.div>
         ),
         []
     );
 
     return (
-        <motion.div 
-            variants={memoizedContainer}
-            initial="hidden"
-            animate="show"
-            className='space-y-12'
-        >
+        <motion.div variants={memoizedContainer} initial='hidden' animate='show' className='space-y-12'>
             {introductionSection}
 
             {highlightsSection}
 
             {/* Divider */}
-            <div className="w-full h-px bg-gradient-to-r from-transparent via-teal-400/20 to-transparent" />
+            <div className='w-full h-px bg-gradient-to-r from-transparent via-teal-400/20 to-transparent' />
 
             {skillsSection}
 
             {/* Divider */}
-            <div className="w-full h-px bg-gradient-to-r from-transparent via-teal-400/20 to-transparent" />
+            <div className='w-full h-px bg-gradient-to-r from-transparent via-teal-400/20 to-transparent' />
 
             {educationAndFocusSection}
+
+            {/* Divider */}
+            <div className='w-full h-px bg-gradient-to-r from-transparent via-teal-400/20 to-transparent' />
+
+            {/* Current Interests Section */}
+            <motion.div variants={memoizedItem} className='space-y-6'>
+                <h3 className='text-2xl font-semibold text-white flex items-center gap-3'>
+                    <span className='text-teal-400 text-3xl'>{'{'}</span>
+                    Current Interests
+                    <span className='text-teal-400 text-3xl'>{'}'}</span>
+                </h3>
+                <div className='grid grid-cols-1 md:grid-cols-2 gap-4'>
+                    <div className='space-y-2 p-3 bg-base-300/30 rounded-lg border border-teal-400/10 hover:border-teal-400/30 transition-all'>
+                        <h5 className='text-white/90 font-medium flex items-center gap-2'>
+                            <span className='text-teal-400 text-lg'>▹</span>
+                            AI & Machine Learning
+                        </h5>
+                        <p className='text-white/60 text-sm pl-6'>
+                            Integrating AI capabilities into applications to enhance user experiences and automate complex tasks through APIs and ML models.
+                        </p>
+                    </div>
+                    <div className='space-y-2 p-3 bg-base-300/30 rounded-lg border border-teal-400/10 hover:border-teal-400/30 transition-all'>
+                        <h5 className='text-white/90 font-medium flex items-center gap-2'>
+                            <span className='text-teal-400 text-lg'>▹</span>
+                            Backend Development
+                        </h5>
+                        <p className='text-white/60 text-sm pl-6'>
+                            Strengthening server-side expertise with advanced design patterns and microservices architecture.
+                        </p>
+                    </div>
+                    <div className='space-y-2 p-3 bg-base-300/30 rounded-lg border border-teal-400/10 hover:border-teal-400/30 transition-all'>
+                        <h5 className='text-white/90 font-medium flex items-center gap-2'>
+                            <span className='text-teal-400 text-lg'>▹</span>
+                            DevOps & Infrastructure
+                        </h5>
+                        <p className='text-white/60 text-sm pl-6'>
+                            Expanding knowledge in CI/CD pipelines, container orchestration, and cloud infrastructure management.
+                        </p>
+                    </div>
+                    <div className='space-y-2 p-3 bg-base-300/30 rounded-lg border border-teal-400/10 hover:border-teal-400/30 transition-all'>
+                        <h5 className='text-white/90 font-medium flex items-center gap-2'>
+                            <span className='text-teal-400 text-lg'>▹</span>
+                            Mobile Development
+                        </h5>
+                        <p className='text-white/60 text-sm pl-6'>
+                            Exploring native mobile app development with Swift and SwiftUI.
+                        </p>
+                    </div>
+                </div>
+            </motion.div>
         </motion.div>
     );
 }
