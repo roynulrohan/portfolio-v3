@@ -109,6 +109,10 @@ function Index() {
 
                             <div className='space-y-6 opacity-0 animate-[fadeInUp_0.5s_ease-out_0.7s_forwards]'>
                                 <p className='text-lg md:text-xl text-white/80 max-w-2xl leading-relaxed text-center md:text-left'>{description}</p>
+                                <div className='flex items-center justify-center md:justify-start gap-2 text-white/60'>
+                                    <span>📍</span>
+                                    <span>Ottawa, Ontario</span>
+                                </div>
                             </div>
 
                             {/* Social Links */}

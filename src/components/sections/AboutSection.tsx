@@ -105,15 +105,11 @@ export function AboutSection() {
                 </div>
                 <div className='prose prose-invert prose-teal max-w-none'>
                     <p className='text-lg text-white/80 leading-relaxed'>
-                        I'm a versatile developer with a strong foundation in web development and a broad technical toolkit. While web development is my core
-                        strength, I've cultivated a diverse range of skills across different domains of software development, allowing me to adapt quickly to
-                        new challenges and technologies.
+                        Full-stack developer with a passion for crafting efficient, user-centric solutions. My core strength lies in web development, but I thrive in exploring and mastering various domains of software development.
                     </p>
                     <br />
                     <p className='text-lg text-white/80 leading-relaxed'>
-                        What drives me is my genuine passion for coding and problem-solving. I find real enjoyment in tackling complex challenges and learning
-                        new technologies, which naturally accelerates my growth as a developer. This enthusiasm, combined with my ability to learn rapidly,
-                        enables me to effectively bridge gaps between different technologies and find innovative solutions.
+                        Driven by a love for problem-solving and continuous learning, I enjoy tackling complex challenges and staying at the forefront of technology. This mindset enables me to bridge technical gaps and deliver innovative solutions that make a real impact.
                     </p>
                 </div>
             </motion.div>
@@ -263,7 +259,7 @@ export function AboutSection() {
                                 Backend Development
                             </h5>
                             <p className='text-white/60 text-sm pl-6'>
-                                Strengthening server-side expertise with advanced Node.js patterns and microservices architecture.
+                                Strengthening server-side expertise with advanced design patterns and microservices architecture.
                             </p>
                         </div>
                         <div className='space-y-2 p-3 bg-base-300/30 rounded-lg border border-teal-400/10 group-hover:border-teal-400/30 transition-all'>
@@ -281,7 +277,7 @@ export function AboutSection() {
                                 Mobile Development
                             </h5>
                             <p className='text-white/60 text-sm pl-6'>
-                                Exploring cross-platform development with React Native and native mobile app architectures.
+                                Exploring native mobile app development with Swift and SwiftUI.
                             </p>
                         </div>
                         <div className='space-y-2 p-3 bg-base-300/30 rounded-lg border border-teal-400/10 group-hover:border-teal-400/30 transition-all'>
@@ -308,8 +304,17 @@ export function AboutSection() {
             className='space-y-12'
         >
             {introductionSection}
+
             {highlightsSection}
+
+            {/* Divider */}
+            <div className="w-full h-px bg-gradient-to-r from-transparent via-teal-400/20 to-transparent" />
+
             {skillsSection}
+
+            {/* Divider */}
+            <div className="w-full h-px bg-gradient-to-r from-transparent via-teal-400/20 to-transparent" />
+
             {educationAndFocusSection}
         </motion.div>
     );

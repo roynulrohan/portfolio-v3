@@ -22,7 +22,7 @@ interface Project {
 // Function to get screenshot URL or fallback
 const getScreenshotUrl = (url: string) => {
     // Using thum.io - completely free, no API key needed
-    return `https://image.thum.io/get/width/1280/crop/720/maxAge/24/viewportWidth/1280/viewportHeight/720/wait/5/${url}`;
+    return `https://image.thum.io/get/width/1280/crop/720/maxAge/24/viewportWidth/1280/viewportHeight/720/${url}`;
 };
 
 const projects: Project[] = [
