@@ -40,19 +40,6 @@ const skillCategories: SkillCategory[] = [
     },
 ];
 
-const highlights = [
-    {
-        title: 'Full Stack Developer',
-        description: 'Experienced in building complete web applications from frontend to backend deployment.',
-        icon: '💻',
-    },
-    {
-        title: 'Mobile Developer',
-        description: 'Crafting intuitive cross-platform mobile experiences with modern frameworks and native solutions.',
-        icon: '📱',
-    },
-];
-
 const container = {
     hidden: { opacity: 0 },
     show: {
@@ -78,7 +65,6 @@ const item = {
 
 export function AboutSection() {
     // Memoize static data
-    const memoizedHighlights = useMemo(() => highlights, []);
     const memoizedSkillCategories = useMemo(() => skillCategories, []);
 
     // Memoize animation variants
