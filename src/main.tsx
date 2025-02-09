@@ -28,16 +28,17 @@ declare module '@tanstack/react-router' {
     }
 }
 
-// Dehydrate the router cache
-await router.load();
-
-// Render the app
+// Initialize the app
 const rootElement = document.getElementById('root')!;
 if (!rootElement.innerHTML) {
     const root = ReactDOM.createRoot(rootElement);
-    root.render(
-        <StrictMode>
-            <RouterProvider router={router} />
-        </StrictMode>
-    );
+    
+    // Dehydrate the router cache and render
+    router.load().then(() => {
+        root.render(
+            <StrictMode>
+                <RouterProvider router={router} />
+            </StrictMode>
+        );
+    });
 }
