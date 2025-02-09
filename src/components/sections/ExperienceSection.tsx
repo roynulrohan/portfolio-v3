@@ -17,13 +17,13 @@ const experiences: Experience[] = [
             'Delivered high-quality web and mobile applications through effective client communication and requirement analysis',
             'Developed responsive web applications using Next.js, Vite React, and TypeScript, enhancing digital presence for multiple clients',
             'Created engaging landing pages with optimized user experience using modern frontend technologies',
-            'Built robust RESTful APIs using Express.js and Spring Boot, ensuring seamless data flow between frontend and backend systems',
+            'Built robust RESTful APIs using Express.js and GraphQL, ensuring seamless data flow between frontend and backend systems',
             'Implemented cross-platform mobile solutions using React Native, expanding client reach to mobile users',
         ],
-        technologies: ['Next.js', 'React', 'TypeScript', 'React Native', 'Express.js', 'Spring Boot', 'HTML/CSS', 'PHP'],
+        technologies: ['Next.js', 'React', 'TypeScript', 'React Native', 'Express.js', 'GraphQL'],
     },
     {
-        title: 'Project Advisor',
+        title: 'Project Advisor, AS-02',
         company: 'Employment and Social Development Canada',
         period: 'Jul. 2022 - March 2024',
         description: [
