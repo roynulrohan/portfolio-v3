@@ -8,4 +8,8 @@ export const Route = createRootRoute({
             <Outlet />
         </>
     ),
+    notFoundComponent: () => {
+        window.location.href = '/404';
+        return null;
+    }
 });
