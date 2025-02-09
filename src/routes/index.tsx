@@ -94,11 +94,10 @@ function Index() {
                 <section id='main' className='relative flex flex-col justify-center items-center md:items-start p-3 md:p-5 min-h-screen'>
                     <div className='p-2 md:p-5 flex flex-col space-y-2 w-full max-w-5xl mx-auto md:ml-[15%] rounded-xl'>
                         <div className='text-center md:text-left space-y-6 md:space-y-8'>
-                            <span className='flex flex-wrap justify-center md:justify-start text-base md:text-lg tracking-[0.3em] text-teal-400 font-medium opacity-0 animate-[fadeInUp_0.5s_ease-out_0.1s_forwards]'>
-                                {getAnimatedRoleMessage}
-                            </span>
-
                             <div className='space-y-3 md:space-y-4'>
+                                <span className='flex flex-wrap justify-center md:justify-start text-base md:text-lg tracking-[0.3em] text-teal-400 font-medium opacity-0 animate-[fadeInUp_0.5s_ease-out_0.1s_forwards]'>
+                                    {getAnimatedRoleMessage}
+                                </span>
                                 <h1 className='flex flex-wrap justify-center md:justify-start text-4xl sm:text-7xl md:text-8xl text-white font-bold tracking-tight leading-[1.1] max-w-4xl opacity-0 animate-[fadeInUp_0.5s_ease-out_0.3s_forwards]'>
                                     {getAnimatedTitle}
                                 </h1>
@@ -134,24 +133,19 @@ function Index() {
                                     </svg>
                                 </a>
                                 <a
-                                    title='LinkedIn'
                                     href='https://linkedin.com/in/roynul-rohan'
-                                    rel='noreferrer'
                                     target='_blank'
-                                    className='p-3 rounded-xl bg-teal-400/5 hover:bg-teal-400/20 border border-teal-400/20 hover:border-teal-400/40 transition-all duration-300 group'>
+                                    rel='noreferrer'
+                                    className='px-4 py-2.5 md:px-5 md:py-3 rounded-xl bg-teal-400 hover:bg-teal-500 text-black/80 hover:text-black font-medium transition-all duration-300 group flex items-center gap-2 text-sm md:text-base'>
                                     <svg
                                         xmlns='http://www.w3.org/2000/svg'
                                         width='20'
                                         height='20'
                                         viewBox='0 0 24 24'
                                         fill='currentColor'
-                                        className='text-white/70 group-hover:text-white transition-colors md:w-6 md:h-6'>
+                                        className='w-4 h-4 md:w-5 md:h-5'>
                                         <path d='M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z' />
                                     </svg>
-                                </a>
-                                <a
-                                    href='mailto:roynulrohan@gmail.com'
-                                    className='px-4 py-2.5 md:px-5 md:py-3 rounded-xl bg-teal-400 hover:bg-teal-500 text-black/80 hover:text-black font-medium transition-all duration-300 group flex items-center gap-2 text-sm md:text-base'>
                                     Let's Connect
                                     <svg
                                         xmlns='http://www.w3.org/2000/svg'
