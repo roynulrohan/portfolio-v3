@@ -1,7 +1,6 @@
 import { createRootRoute, Outlet, useRouter } from '@tanstack/react-router';
 import { Navbar } from '../components/Navbar';
 import { Suspense, useEffect } from 'react';
-import { trackPageView } from '../lib/firebase';
 import { Analytics } from '@vercel/analytics/react';
 
 export const Route = createRootRoute({
@@ -13,23 +12,6 @@ export const Route = createRootRoute({
 });
 
 function RootComponent() {
-    const router = useRouter();
-
-    // Track page views
-    useEffect(() => {
-        const handleRouteChange = () => {
-            const pageName = window.location.pathname === '/' ? 'Home' : window.location.pathname.slice(1);
-            trackPageView(pageName);
-        };
-
-        // Track initial page view
-        handleRouteChange();
-
-        // Listen for route changes
-        const unsubscribe = router.subscribe('onBeforeLoad', handleRouteChange);
-        return () => unsubscribe();
-    }, [router]);
-
     return (
         <Suspense
             fallback={
