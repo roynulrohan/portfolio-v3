@@ -13,7 +13,6 @@
     "@headlessui/react": "^2.2.0",
     "@tanstack/react-router": "^1.99.13",
     "@vercel/analytics": "^1.4.1",
-    "firebase": "^11.3.0",
     "framer-motion": "^12.4.1",
     "lucide-react": "^0.475.0",
     "react": "^19.0.0",
