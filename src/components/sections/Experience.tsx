@@ -7,6 +7,43 @@ interface SkillCategory {
     icon: string;
 }
 
+interface Experience {
+    title: string;
+    company: string;
+    period: string;
+    description: string[];
+    technologies: string[];
+}
+
+const experiences: Experience[] = [
+    {
+        title: 'Freelance Full-Stack Developer',
+        company: 'Self-Employed',
+        period: 'Dec. 2020 - Present',
+        description: [
+            'Delivered high-quality web and mobile applications through effective client communication and requirement analysis',
+            'Developed responsive web applications using Next.js, Vite React, and TypeScript, enhancing digital presence for multiple clients',
+            'Created engaging landing pages with optimized user experience using modern frontend technologies',
+            'Built robust RESTful APIs using Express.js and GraphQL, ensuring seamless data flow between frontend and backend systems',
+            'Implemented cross-platform mobile solutions using React Native, expanding client reach to mobile users',
+        ],
+        technologies: ['Next.js', 'React', 'TypeScript', 'React Native', 'Express.js', 'GraphQL'],
+    },
+    {
+        title: 'Project Advisor, AS-02',
+        company: 'Employment and Social Development Canada',
+        period: 'Jul. 2022 - March 2024',
+        description: [
+            'Led development initiatives within the Digital Transformation Services team of the Compensation Directorate',
+            'Architected and developed internal applications for compensation advisors, implementing diverse business calculators and automation tools',
+            'Engineered a user-friendly mail merge tool with GUI interface, optimizing mass email distribution for non-technical users',
+            'Conducted thorough stakeholder engagement to align project objectives and ensure successful delivery of solutions',
+            'Utilized modern tech stack including TypeScript, Python, Svelte, React.js, MySQL, Git, and Azure Cloud Services',
+        ],
+        technologies: ['TypeScript', 'Python', 'Svelte', 'React.js', 'MySQL', 'Git', 'Azure Cloud Services'],
+    },
+];
+
 const skillCategories: SkillCategory[] = [
     {
         name: 'Frontend Development',
@@ -16,7 +53,7 @@ const skillCategories: SkillCategory[] = [
     {
         name: 'Backend & Databases',
         icon: '⚙️',
-        skills: ['Node.js', 'Bun', 'Express', 'Spring Boot', 'Apollo GraphQL API', 'REST API', 'PostgreSQL', 'MySQL', 'MongoDB', 'Redis'],
+        skills: ['Node.js', 'Nest.js', 'Express', 'Spring Boot', 'Apollo GraphQL API', 'REST API', 'PostgreSQL', 'MySQL', 'MongoDB', 'Redis'],
     },
     {
         name: 'Programming Languages',
@@ -31,12 +68,12 @@ const skillCategories: SkillCategory[] = [
     {
         name: 'DevOps & Cloud',
         icon: '🚀',
-        skills: ['Git', 'Docker', 'Docker Compose', 'AWS EC2', 'Cloudflare', 'Supabase', 'Vercel', 'GitLab CI/CD', 'GitHub Actions'],
+        skills: ['Git', 'Docker', 'Docker Compose', 'Nginx', 'AWS EC2', 'AWS S3', 'Cloudflare', 'Supabase', 'Vercel', 'GitLab CI/CD', 'GitHub Actions'],
     },
     {
         name: 'System Administration',
         icon: '🖥️',
-        skills: ['Linux', 'Windows', 'Ubuntu Server', 'macOS', 'SSH', 'Nginx'],
+        skills: ['Linux', 'Windows', 'Ubuntu Server', 'macOS', 'SSH'],
     },
 ];
 
@@ -63,7 +100,7 @@ const item = {
     },
 };
 
-export function AboutSection() {
+export function ExperienceSection() {
     // Memoize static data
     const memoizedSkillCategories = useMemo(() => skillCategories, []);
 
@@ -71,27 +108,63 @@ export function AboutSection() {
     const memoizedContainer = useMemo(() => container, []);
     const memoizedItem = useMemo(() => item, []);
 
-    // Memoize introduction section
-    const introductionSection = useMemo(
+    const experienceSection = useMemo(
         () => (
             <motion.div variants={memoizedItem} className='space-y-6'>
-                <div className='flex items-center gap-3'>
+                <div className='space-y-4'>
                     <h2 className='text-3xl font-bold text-white flex items-center gap-3'>
                         <span className='text-teal-400 text-3xl'>{'{'}</span>
-                        About Me
+                        Professional Experience
                         <span className='text-teal-400 text-3xl'>{'}'}</span>
                     </h2>
+                    <p className='text-lg text-white/80 leading-relaxed'>
+                        My professional journey combines government sector experience with freelance development work, demonstrating versatility in both
+                        structured enterprise environments and client-focused project delivery.
+                    </p>
                 </div>
-                <div className='prose prose-invert prose-teal max-w-none'>
-                    <p className='text-lg text-white/80 leading-relaxed'>
-                        Full-stack developer with a passion for crafting efficient, user-centric solutions. My core strength lies in web development, but I
-                        thrive in exploring and mastering various domains of software development.
-                    </p>
-                    <br />
-                    <p className='text-lg text-white/80 leading-relaxed'>
-                        Driven by curiosity and a commitment to excellence, I enjoy transforming complex requirements into elegant, scalable applications. This
-                        mindset enables me to create innovative solutions that deliver real value to users.
-                    </p>
+
+                <div className='space-y-6'>
+                    {experiences.map((exp, index) => (
+                        <div key={exp.title} className='relative'>
+                            <div className='bg-base-300/50 rounded-xl p-6 border border-teal-400/20 hover:border-teal-400/40 transition-all group'>
+                                <div className='flex flex-col md:flex-row md:items-start gap-4 mb-6'>
+                                    <div className='flex-1 space-y-2'>
+                                        <div className='flex items-center gap-3'>
+                                            <span className='text-2xl'>{index === 0 ? '💼' : '🚀'}</span>
+                                            <h3 className='text-xl font-semibold text-white group-hover:text-teal-400 transition-colors'>{exp.title}</h3>
+                                        </div>
+                                        <p className='text-teal-400 font-medium'>{exp.company}</p>
+                                    </div>
+                                    <div className='md:self-start px-3 py-1.5 rounded-full bg-teal-400/10 text-teal-400 text-sm font-medium border border-teal-400/20'>
+                                        {exp.period}
+                                    </div>
+                                </div>
+
+                                <div className='space-y-6'>
+                                    <ul className='space-y-3'>
+                                        {exp.description.map((desc, i) => (
+                                            <li key={i} className='flex items-start gap-3 text-white/80'>
+                                                <span className='text-teal-400 text-sm mt-1.5'>▹</span>
+                                                <span className='flex-1'>{desc}</span>
+                                            </li>
+                                        ))}
+                                    </ul>
+
+                                    <div className='pt-2'>
+                                        <div className='flex flex-wrap gap-2'>
+                                            {exp.technologies.map((tech) => (
+                                                <span
+                                                    key={tech}
+                                                    className='px-3 py-1 bg-base-300/70 text-white/70 hover:text-teal-400 rounded-lg text-sm border border-teal-400/20 hover:border-teal-400/40 transition-all'>
+                                                    {tech}
+                                                </span>
+                                            ))}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    ))}
                 </div>
             </motion.div>
         ),
@@ -274,7 +347,7 @@ export function AboutSection() {
                                                 Programming, Network Systems
                                             </p>
                                         </div>
-                                        <p className='hidden md:block text-white/60 text-sm font-medium'>2023 - 2025</p>
+                                        <p className='hidden md:block text-white/60 text-sm font-medium'>2024 - 2026</p>
                                     </div>
                                     <div className='hidden md:flex justify-end'>
                                         <div className='px-3 py-1.5 bg-teal-400/10 rounded-lg border border-teal-400/30'>
@@ -297,7 +370,7 @@ export function AboutSection() {
                                             <p className='text-teal-400 font-medium'>Online Resources & Personal Projects</p>
                                             <p className='text-white/70 text-sm mt-2 max-w-2xl'>
                                                 Started with web development fundamentals and progressively expanded into full-stack development. Built numerous
-                                                projects while learning new technologies along the way.
+                                                projects while learning new technologies along the way. Continues to learn new technologies and improve skills.
                                             </p>
                                         </div>
                                         <p className='hidden md:block text-white/60 text-sm font-medium'>2020 - Present</p>
@@ -319,9 +392,7 @@ export function AboutSection() {
 
     return (
         <motion.div variants={memoizedContainer} initial='hidden' animate='show' className='space-y-12'>
-            {introductionSection}
-
-            {highlightsSection}
+            {experienceSection}
 
             {/* Divider */}
             <div className='w-full h-px bg-gradient-to-r from-transparent via-teal-400/20 to-transparent' />
@@ -376,9 +447,7 @@ export function AboutSection() {
                             <span className='text-teal-400 text-lg'>▹</span>
                             Mobile Development
                         </h5>
-                        <p className='text-white/60 text-sm pl-6'>
-                            Exploring native mobile app development with Swift and SwiftUI.
-                        </p>
+                        <p className='text-white/60 text-sm pl-6'>Exploring native mobile app development with Swift and SwiftUI.</p>
                     </div>
                 </div>
             </motion.div>

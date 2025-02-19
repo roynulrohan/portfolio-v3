@@ -1,23 +1,23 @@
 import { createFileRoute } from '@tanstack/react-router';
 import AnimatedLetter from '../components/AnimatedLetter';
 import { TabView } from '../components/TabView';
-import { AboutSection } from '../components/sections/AboutSection';
-import { ProjectsSection } from '../components/sections/ProjectsSection';
-import { ContactSection } from '../components/sections/ContactSection';
+import { ProjectsSection } from '../components/sections/Projects';
+import { ContactSection } from '../components/sections/Contact';
 import { ParticlesBackground } from '../components/ParticlesBackground';
 import { Footer } from '../components/Footer';
 import { useMemo, useCallback, useState } from 'react';
-import { ExperienceSection } from '../components/sections/ExperienceSection';
+import { ExperienceSection } from '../components/sections/Experience';
+import { AboutMeSection } from '../components/sections/AboutMe';
 
 export const Route = createFileRoute('/')({
     component: Index,
 });
 
-const title = "Hi, I'm Roynul";
+const title = 'Roynul Rohan';
 const roleMessage = 'FULL STACK DEVELOPER';
-const tagline = 'Transforming ideas into scalable digital solutions';
+const tagline = 'Enterprise solutions, startup agility';
 const description =
-    'A problem solver at heart with a keen eye for detail. I thrive on turning complex challenges into elegant solutions that make a real impact. Always learning, always innovating.';
+    "A developer who believes in smart solutions over complex ones. My experience in both government and freelance sectors has taught me that great software doesn't need to be expensive - just well-crafted.";
 
 function Index() {
     const [selectedTabIndex, setSelectedTabIndex] = useState(0);
@@ -39,10 +39,10 @@ function Index() {
     const tabs = useMemo(
         () => [
             {
-                id: 'about',
-                label: 'About',
-                icon: '👨‍💻',
-                content: <AboutSection />,
+                id: 'experience',
+                label: 'Experience & Skills',
+                icon: '🏆',
+                content: <ExperienceSection />,
             },
             {
                 id: 'projects',
@@ -51,15 +51,15 @@ function Index() {
                 content: <ProjectsSection />,
             },
             {
-                id: 'experience',
-                label: 'Experience',
-                icon: '💼',
-                content: <ExperienceSection />,
+                id: 'journey',
+                label: 'My Journey',
+                icon: '🛤️',
+                content: <AboutMeSection />,
             },
             {
                 id: 'contact',
                 label: 'Contact',
-                icon: '✉️',
+                icon: '📬',
                 content: <ContactSection />,
             },
         ],
@@ -98,7 +98,7 @@ function Index() {
                                 <span className='flex flex-wrap justify-center md:justify-start text-base md:text-lg tracking-[0.3em] text-teal-400 font-medium opacity-0 animate-[fadeInUp_0.5s_ease-out_0.1s_forwards]'>
                                     {getAnimatedRoleMessage}
                                 </span>
-                                <h1 className='flex flex-wrap justify-center md:justify-start text-4xl sm:text-7xl md:text-8xl text-white font-bold tracking-tight leading-[1.1] max-w-4xl opacity-0 animate-[fadeInUp_0.5s_ease-out_0.3s_forwards]'>
+                                <h1 className='flex flex-wrap justify-center md:justify-start text-4xl sm:text-6xl md:text-7xl text-white font-bold tracking-tight leading-[1.1] max-w-4xl opacity-0 animate-[fadeInUp_0.5s_ease-out_0.3s_forwards]'>
                                     {getAnimatedTitle}
                                 </h1>
                                 <p className='flex flex-wrap justify-center md:justify-start text-xl sm:text-3xl md:text-4xl text-teal-400/90 font-medium tracking-tight leading-relaxed opacity-0 animate-[fadeInUp_0.5s_ease-out_0.5s_forwards]'>
@@ -107,10 +107,10 @@ function Index() {
                             </div>
 
                             <div className='space-y-6 opacity-0 animate-[fadeInUp_0.5s_ease-out_0.7s_forwards]'>
-                                <p className='text-lg md:text-xl text-white/80 max-w-2xl leading-relaxed text-center md:text-left'>{description}</p>
-                                <div className='flex items-center justify-center md:justify-start gap-2 text-white/60'>
+                                <p className='text-lg md:text-xl text-white/90 max-w-4xl leading-relaxed text-center md:text-left'>{description}</p>
+                                <div className='flex items-center justify-center md:justify-start gap-2 text-white/80'>
                                     <span>📍</span>
-                                    <span>Ottawa, Ontario</span>
+                                    <span>Ottawa, Ontario, Canada</span>
                                 </div>
                             </div>
 
@@ -166,7 +166,7 @@ function Index() {
 
                 {/* Content Section */}
                 <section className='relative px-4'>
-                    <div className='max-w-[90rem] mx-auto -mt-32'>
+                    <div className='max-w-[90rem] mx-auto -mt-28'>
                         <TabView tabs={tabs} selectedIndex={selectedTabIndex} onChange={setSelectedTabIndex} className='fade-in-up w-full' />
                     </div>
                 </section>

@@ -38,7 +38,7 @@ export function TabView({ tabs, selectedIndex, onChange, className = '' }: TabVi
                                         <button
                                             className={twMerge(
                                                 'relative px-4 md:px-8 py-3 md:py-4 text-sm md:text-base font-medium rounded-t-2xl',
-                                                'flex items-center gap-2 md:gap-2.5 flex-1 md:w-[160px] md:flex-none justify-center',
+                                                'flex items-center gap-2 md:gap-2.5 flex-1 md:flex-none justify-center',
                                                 'transition-colors duration-200',
                                                 'text-white/60 bg-base-300/50',
                                                 'hover:text-white/80 hover:bg-base-300/70',

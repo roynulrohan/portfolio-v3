@@ -59,7 +59,7 @@ const projects: Project[] = [
         title: '📈 Stocks.io',
         description:
             'A comprehensive stock trading platform featuring real-time updates and advanced trading functionalities. Built with modern web technologies for optimal performance.',
-        previewUrl: 'https://stocks-io.roynul.com/',
+        //previewUrl: 'https://stocks-io.roynul.com/',
         thumbnailUrl: stocksIoThumb,
         demoLink: 'https://stocks-io.roynul.com/',
         githubLink: 'https://github.com/roynulrohan/Stocks.io',
