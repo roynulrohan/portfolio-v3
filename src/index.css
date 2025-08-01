@@ -1,13 +1,13 @@
-@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap");
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 @layer base {
-  html {
-    font-family: 'Space Grotesk', sans-serif;
-  }
+    html {
+        font-family: "Space Grotesk", sans-serif;
+    }
 }
 
 .rubberBand {
@@ -45,27 +45,27 @@
 }
 
 @keyframes float {
-  0% {
-    transform: translateY(0px);
-  }
-  50% {
-    transform: translateY(-10px);
-  }
-  100% {
-    transform: translateY(0px);
-  }
+    0% {
+        transform: translateY(0px);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+    100% {
+        transform: translateY(0px);
+    }
 }
 
 @keyframes float-reverse {
-  0% {
-    transform: translateY(0px) rotate(0deg);
-  }
-  50% {
-    transform: translateY(10px) rotate(3deg);
-  }
-  100% {
-    transform: translateY(0px) rotate(0deg);
-  }
+    0% {
+        transform: translateY(0px) rotate(0deg);
+    }
+    50% {
+        transform: translateY(10px) rotate(3deg);
+    }
+    100% {
+        transform: translateY(0px) rotate(0deg);
+    }
 }
 
 @keyframes spin-slow {
@@ -89,39 +89,24 @@
     }
 }
 
-@keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-.fade-in-up {
-  animation: fadeInUp 0.8s ease-out forwards;
-}
-
 .delay-200 {
-  animation-delay: 200ms;
+    animation-delay: 200ms;
 }
 
 .delay-400 {
-  animation-delay: 400ms;
+    animation-delay: 400ms;
 }
 
 .delay-600 {
-  animation-delay: 600ms;
+    animation-delay: 600ms;
 }
 
 .floating {
-  animation: float 8s ease-in-out infinite;
+    animation: float 8s ease-in-out infinite;
 }
 
 .floating-reverse {
-  animation: float-reverse 10s ease-in-out infinite;
+    animation: float-reverse 10s ease-in-out infinite;
 }
 
 .spinning {
@@ -213,4 +198,16 @@
 .thin-scrollbar::-webkit-scrollbar-thumb {
     background-color: rgba(94, 234, 212, 0.3);
     border-radius: 20px;
+}
+
+/* Embla Carousel Styles */
+.embla {
+    overflow: hidden;
+}
+.embla__container {
+    display: flex;
+}
+.embla__slide {
+    flex: 0 0 100%;
+    min-width: 0;
 }
