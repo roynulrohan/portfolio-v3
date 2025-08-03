@@ -1,7 +1,6 @@
 import useEmblaCarousel from "embla-carousel-react";
-import { motion } from "framer-motion";
 import { ChevronLeft, ChevronRight, Code2, GanttChart, GitFork, GithubIcon, Globe, Play, Rocket } from "lucide-react";
-import { useCallback, useEffect, useState } from "react";
+import { HTMLAttributes, useCallback, useEffect, useState } from "react";
 import Lightbox from "yet-another-react-lightbox";
 import "yet-another-react-lightbox/plugins/captions.css";
 import Counter from "yet-another-react-lightbox/plugins/counter";
@@ -11,6 +10,8 @@ import "yet-another-react-lightbox/plugins/thumbnails.css";
 import Zoom from "yet-another-react-lightbox/plugins/zoom";
 import "yet-another-react-lightbox/styles.css";
 import { cn } from "../lib/utils";
+import { Project } from "./sections/Projects";
+import { useIsMobile } from "../hooks/use-mobile";
 
 // Function to dynamically get all images from a folder
 const getProjectImages = (folderName: string) => {
@@ -29,26 +30,12 @@ const getProjectImages = (folderName: string) => {
     return folderImages;
 };
 
-type ProjectLinkType = "github" | "website" | "demo";
-
-interface ProjectLink {
-    title: string;
-    link: string;
-    type: ProjectLinkType;
+interface ProjectCardProps extends HTMLAttributes<HTMLDivElement> {
+    project: Project;
 }
 
-interface Project {
-    title: string;
-    subtitle: string;
-    description: string;
-    links?: ProjectLink[];
-    technologies: string[];
-    features?: string[];
-    imagesFolder: string;
-    isMobile?: boolean;
-}
-
-export default function ProjectCard({ project }: { project: Project }) {
+export default function ProjectCard({ project, className, ...props }: ProjectCardProps) {
+    const isMobile = useIsMobile();
     const images = getProjectImages(project.imagesFolder);
     const [emblaRef, emblaApi] = useEmblaCarousel(
         images.length > 1
@@ -98,14 +85,14 @@ export default function ProjectCard({ project }: { project: Project }) {
     }, [emblaApi]);
 
     return (
-        <motion.div key={project.title} className="group">
+        <div key={project.title} className={cn("group", className)} {...props}>
             <div
                 className={cn(
                     "bg-base-300/50 rounded-xl overflow-hidden border border-teal-400/20 hover:border-teal-400/40 transition-all h-full",
-                    project.isMobile ? "flex flex-row-reverse" : "flex flex-col"
+                    project.isMobile && !isMobile ? "flex flex-row-reverse" : "flex flex-col"
                 )}
             >
-                <div className={cn("overflow-hidden relative group", project.isMobile ? "aspect-[19.5/9] rounded-xl m-2" : "aspect-[16/8]")}>
+                <div className={cn("overflow-hidden relative group", project.isMobile && !isMobile ? "aspect-[19.5/9] rounded-xl m-2" : "aspect-[16/8]")}>
                     {images.length > 0 ? (
                         images.length === 1 ? (
                             // Single image - no carousel
@@ -204,13 +191,47 @@ export default function ProjectCard({ project }: { project: Project }) {
                     )}
                 </div>
 
-                <div className={cn("space-y-4 flex-1 flex flex-col justify-between", project.isMobile ? "min-w-[50%] p-4" : "p-4")}>
+                <div className={cn("space-y-4 flex-1 flex flex-col justify-between", project.isMobile || isMobile ? "min-w-[50%] p-4" : "p-4")}>
                     <div className="space-y-2">
-                        <div className="flex items-center justify-between gap-2">
+                        <div className={cn("flex items-center justify-between gap-2", project.isMobile || isMobile ? "flex-col" : "flex-row")}>
                             <h3 className="text-xl font-semibold text-white group-hover:text-teal-400 transition-colors">{project.title}</h3>
-                            <h4 className="text-sm font-medium bg-gradient-to-r from-purple-500/20 to-pink-500/20 text-purple-300 border border-purple-500/30 rounded-full px-4 py-1 w-fit backdrop-blur-sm">
-                                {project.subtitle}
-                            </h4>
+                            <div className="flex flex-wrap justify-center gap-2">
+                                {project.date && (
+                                    <span
+                                        className={cn(
+                                            "text-xs font-medium border rounded-full px-4 py-1 w-fit backdrop-blur-sm",
+                                            "bg-gradient-to-r from-blue-500/20 to-indigo-500/20 text-blue-300 border-blue-500/30"
+                                        )}
+                                    >
+                                        {project.date}
+                                    </span>
+                                )}
+                                {project.status && (
+                                    <span
+                                        className={cn(
+                                            "text-xs font-medium border rounded-full px-4 py-1 w-fit backdrop-blur-sm",
+                                            project.status === "Launched" &&
+                                                "bg-gradient-to-r from-emerald-500/20 to-teal-500/20 text-emerald-300 border-emerald-500/30",
+                                            project.status === "In Development" &&
+                                                "bg-gradient-to-r from-amber-500/20 to-yellow-500/20 text-amber-300 border-amber-500/30",
+                                            project.status === "Archived" &&
+                                                "bg-gradient-to-r from-gray-500/20 to-slate-500/20 text-gray-300 border-gray-500/30"
+                                        )}
+                                    >
+                                        {project.status}
+                                    </span>
+                                )}
+                                {project.info && (
+                                    <span
+                                        className={cn(
+                                            "text-xs font-medium border rounded-full px-4 py-1 w-fit backdrop-blur-sm",
+                                            "bg-gradient-to-r from-purple-500/20 to-pink-500/20 text-purple-300 border-purple-500/30"
+                                        )}
+                                    >
+                                        {project.info}
+                                    </span>
+                                )}
+                            </div>
                         </div>
                         <p className="text-white/70 text-sm">{project.description}</p>
                     </div>
@@ -305,6 +326,6 @@ export default function ProjectCard({ project }: { project: Project }) {
                     container: { style: { top: "unset", bottom: 0 } },
                 }}
             />
-        </motion.div>
+        </div>
     );
 }

@@ -9,10 +9,12 @@ interface ProjectLink {
     type: ProjectLinkType;
 }
 
-interface Project {
+export interface Project {
     title: string;
-    subtitle: string;
     description: string;
+    info?: string;
+    status?: "Launched" | "In Development" | "Archived";
+    date?: string;
     links?: ProjectLink[];
     technologies: string[];
     features?: string[];
@@ -29,10 +31,25 @@ interface Project {
 const projects: Project[] = [
     {
         title: "⚡ Floxy.io",
-        subtitle: "Proxy Marketplace SaaS",
         description:
             "A comprehensive proxy marketplace offering residential, datacenter, mobile, and ISP proxies. Features real-time proxy generation, API integration, and advanced dashboard for seamless web data access.",
-        technologies: ["TypeScript", "React", "NestJS", "GraphQL", "Supabase", "Cloudflare", "Webflow", "Node.js"],
+        status: "Launched",
+        info: "Proxy Marketplace SaaS",
+        date: "April 2025 - Present",
+        technologies: [
+            "TypeScript",
+            "React",
+            "Vite",
+            "NestJS",
+            "Fastify",
+            "Mercurius GraphQL",
+            "TypeORM",
+            "PostgreSQL",
+            "Supabase",
+            "Stripe",
+            "Cloudflare DNS",
+            "Shadcn/UI",
+        ],
         features: [
             "Multi-type proxy support (Residential, ISP, Mobile, Datacenter)",
             "Developer-friendly API integration",
@@ -51,10 +68,42 @@ const projects: Project[] = [
         ],
     },
     {
+        title: "🤖 Ivy AI Assistant",
+        description:
+            "An intelligent AI assistant available on web and mobile that automatically organizes your academic schedule by analyzing uploaded timetables and course documents. Creates personalized calendars and syncs with your existing calendar apps.",
+        status: "In Development",
+        info: "Web & Mobile App",
+        technologies: [
+            "TypeScript",
+            "React",
+            "Vite",
+            "React Native",
+            "Expo",
+            "NestJS",
+            "Mercurius GraphQL",
+            "TypeORM",
+            "PostgreSQL",
+            "Supabase",
+            "Google Gemini",
+            "Shadcn/UI",
+        ],
+        features: [
+            "Schedule & timetable upload & analysis",
+            "Course outline & document processing",
+            "AI-generated personalized schedules",
+            "Calendar sync (Apple/Google/Outlook)",
+            "Intelligent course management system",
+            "AI chatbot for assignment queries",
+        ],
+        imagesFolder: "ivy-ai",
+    },
+    {
         title: "⛏️ Minerverse",
-        subtitle: "Web3 Blockchain Game",
         description:
             "A Web3 blockchain game where players mint unique NFT miners using ETH and engage in real-time mining experiences. Features comprehensive blockchain integration and smart contracts.",
+        status: "Archived",
+        info: "Web3 Blockchain Game",
+        date: "April - July 2022",
         links: [
             {
                 title: "Website",
@@ -66,21 +115,14 @@ const projects: Project[] = [
         features: ["NFT minting system", "Real-time mining mechanics", "MetaMask integration", "Smart contract interaction"],
         imagesFolder: "minerverse",
     },
-    {
-        title: "🤖 Ivy AI Assistant",
-        subtitle: "Full-Stack Web App",
-        description:
-            "A modern AI-powered student assistant that helps organize your academic life. Built with cutting-edge AI technology to streamline student workflows and enhance productivity.",
-        technologies: ["TypeScript", "React", "DaisyUI", "Gemini AI", "Express", "Apollo GraphQL", "Supabase"],
-        features: ["AI-powered task organization", "Academic planning assistance", "Smart scheduling", "Personalized learning support"],
-        imagesFolder: "ivy-ai",
-    },
 
     {
         title: "🐱 Pet Connect",
-        subtitle: "Mobile",
         description:
             "A cross-platform social media app for pets, enabling pet owners to connect and share their furry friends' moments. Features a modern tech stack with real-time updates.",
+        status: "Archived",
+        info: "Mobile App",
+        date: "December 2023",
         links: [
             {
                 title: "GitHub",
@@ -95,9 +137,11 @@ const projects: Project[] = [
     },
     {
         title: "📈 Stocks.io",
-        subtitle: "Portfolio Project",
         description:
             "A comprehensive stock trading platform featuring real-time updates and advanced trading functionalities. Built with modern web technologies for optimal performance.",
+        status: "Archived",
+        info: "Portfolio Project",
+        date: "December 2021",
         links: [
             {
                 title: "GitHub",
@@ -123,9 +167,9 @@ export function ProjectsSection() {
                 <p className="text-lg text-white/80 leading-relaxed">Here are some of the projects I've worked on and been a part of.</p>
             </motion.div>
 
-            <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.2 }} className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.2 }} className="flex flex-wrap justify-center gap-6">
                 {projects.map((project) => (
-                    <ProjectCard key={project.title} project={project} />
+                    <ProjectCard key={project.title} project={project} className="w-full md:w-[calc(50%-0.75rem)]" />
                 ))}
             </motion.div>
 
