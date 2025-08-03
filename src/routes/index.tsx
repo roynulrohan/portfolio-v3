@@ -35,12 +35,7 @@ function Index() {
                 icon: "🚀",
                 content: <ProjectsSection />,
             },
-            // {
-            //     id: 'journey',
-            //     label: 'My Journey',
-            //     icon: '🛤️',
-            //     content: <AboutMeSection />,
-            // },
+
             {
                 id: "contact",
                 label: "Contact",

@@ -69,7 +69,7 @@ export function TabView({ tabs, selectedIndex, onChange, className = "" }: TabVi
                     {/* Content Area */}
                     <div className="border-t border-teal-400/30 bg-base-300/70">
                         <TabPanels>
-                            <AnimatePresence mode="wait" initial={false}>
+                            <AnimatePresence mode="sync" initial={false}>
                                 {tabs.map((tab) => (
                                     <TabPanel
                                         key={tab.id}
@@ -78,7 +78,7 @@ export function TabView({ tabs, selectedIndex, onChange, className = "" }: TabVi
                                         animate={{ opacity: 1 }}
                                         exit={{ opacity: 0 }}
                                         transition={{
-                                            duration: 0.35,
+                                            duration: 0.5,
                                             ease: "easeOut",
                                         }}
                                         className="p-4 md:p-10"

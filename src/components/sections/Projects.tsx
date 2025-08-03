@@ -1,4 +1,3 @@
-import { motion } from "framer-motion";
 import ProjectCard from "../ProjectCard";
 
 type ProjectLinkType = "github" | "website" | "demo";
@@ -158,27 +157,22 @@ const projects: Project[] = [
 export function ProjectsSection() {
     return (
         <div className="space-y-8">
-            <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.2 }} className="space-y-4">
+            <div className="space-y-4">
                 <h2 className="text-2xl sm:text-3xl font-bold text-white flex items-center gap-3">
                     <span className="text-teal-400 text-2xl sm:text-3xl">{"{"}</span>
                     Featured Projects
                     <span className="text-teal-400 text-2xl sm:text-3xl">{"}"}</span>
                 </h2>
                 <p className="text-base sm:text-lg text-white/80 leading-relaxed">Here are some of the projects I've worked on and been a part of.</p>
-            </motion.div>
+            </div>
 
-            <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.2 }} className="flex flex-wrap justify-center gap-6">
+            <div className="flex flex-wrap justify-center gap-6">
                 {projects.map((project) => (
                     <ProjectCard key={project.title} project={project} className="w-full md:w-[calc(50%-0.75rem)]" />
                 ))}
-            </motion.div>
+            </div>
 
-            <motion.div
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ duration: 0.2 }}
-                className="flex flex-col items-center justify-center py-8 text-center space-y-4"
-            >
+            <div className="flex flex-col items-center justify-center py-8 text-center space-y-4">
                 <h3 className="text-lg sm:text-xl font-semibold text-white">Want to see more?</h3>
                 <p className="text-white/80 text-sm sm:text-base">Check out my GitHub profile for more projects and contributions.</p>
                 <a
@@ -192,7 +186,7 @@ export function ProjectsSection() {
                     </svg>
                     Visit My GitHub
                 </a>
-            </motion.div>
+            </div>
         </div>
     );
 }

@@ -1,9 +1,7 @@
-import { motion } from "framer-motion";
-
 export function ContactSection() {
     return (
         <div className="space-y-8">
-            <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.2 }} className="space-y-4">
+            <div className="space-y-4">
                 <h2 className="text-2xl sm:text-3xl font-bold text-white flex items-center gap-3">
                     <span className="text-teal-400 text-2xl sm:text-3xl">{"{"}</span>
                     Get in Touch
@@ -13,7 +11,7 @@ export function ContactSection() {
                     I'm always interested in hearing about new projects and opportunities. Whether you have a question or just want to say hi, feel free to drop
                     me a message!
                 </p>
-            </motion.div>
+            </div>
 
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
                 {/* Contact Info */}
@@ -22,7 +20,7 @@ export function ContactSection() {
                     <div className="flex-1 p-4 sm:p-6 rounded-xl bg-base-300/50 border border-teal-400/20 hover:border-teal-400/40 transition-all">
                         <h3 className="text-lg sm:text-xl font-semibold text-white flex items-center gap-2 mb-6">
                             <span className="text-xl sm:text-2xl">📬</span>
-                            Contact Information
+                            My Links
                         </h3>
                         <div className="flex flex-col gap-4">
                             <a

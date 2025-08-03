@@ -1,6 +1,3 @@
-import { motion } from "framer-motion";
-import { useMemo } from "react";
-
 interface SkillCategory {
     name: string;
     skills: string[];
@@ -77,12 +74,103 @@ const skillCategories: SkillCategory[] = [
 ];
 
 export function ExperienceSection() {
-    // Memoize static data
-    const memoizedSkillCategories = useMemo(() => skillCategories, []);
+    return (
+        <div className="space-y-8">
+            {/* <div className="grid grid-cols-1 md:grid-cols-2 gap-8 h-[400px]">
+                <div className="relative bg-base-300/50 rounded-xl border border-teal-400/20 hover:border-teal-400/40 transition-all group overflow-hidden">
+                    <div className="px-4 py-2 border-b border-teal-400/20 bg-base-300/70 flex items-center gap-2">
+                        <div className="flex gap-1.5">
+                            <div className="w-2.5 h-2.5 rounded-full bg-red-400/80"></div>
+                            <div className="w-2.5 h-2.5 rounded-full bg-yellow-400/80"></div>
+                            <div className="w-2.5 h-2.5 rounded-full bg-green-400/80"></div>
+                        </div>
+                        <div className="flex-1 flex justify-center">
+                            <div className="px-3 py-0.5 text-xs text-white bg-base-300/50 rounded-md border border-teal-400/20">fullstack-developer.app</div>
+                        </div>
+                    </div>
 
-    const experienceSection = useMemo(
-        () => (
-            <motion.div className="space-y-6">
+                    <div className="p-4 space-y-4">
+                        <div className="flex items-center justify-between p-2 bg-base-300/30 rounded-lg border border-teal-400/20">
+                            <div className="w-8 h-8 bg-teal-400/20 rounded-lg"></div>
+                            <div className="flex gap-3">
+                                <div className="w-16 h-2 bg-teal-400/20 rounded-full"></div>
+                                <div className="w-16 h-2 bg-teal-400/20 rounded-full"></div>
+                                <div className="w-16 h-2 bg-teal-400/20 rounded-full"></div>
+                            </div>
+                        </div>
+
+                        <div className="p-6 bg-base-300/30 rounded-lg border border-teal-400/20">
+                            <h3 className="text-xl font-medium text-white group-hover:text-teal-400 transition-colors mb-2">Full Stack Developer</h3>
+                            <p className="text-white/70 text-sm leading-relaxed">
+                                Experienced in building complete web applications from frontend to backend deployment.
+                            </p>
+                        </div>
+
+                        <div className="grid grid-cols-3 gap-3">
+                            <div className="p-3 bg-base-300/30 rounded-lg border border-teal-400/20">
+                                <div className="w-8 h-8 bg-teal-400/20 rounded-lg mb-2"></div>
+                                <div className="w-full h-2 bg-teal-400/20 rounded-full"></div>
+                            </div>
+                            <div className="p-3 bg-base-300/30 rounded-lg border border-teal-400/20">
+                                <div className="w-8 h-8 bg-teal-400/20 rounded-lg mb-2"></div>
+                                <div className="w-full h-2 bg-teal-400/20 rounded-full"></div>
+                            </div>
+                            <div className="p-3 bg-base-300/30 rounded-lg border border-teal-400/20">
+                                <div className="w-8 h-8 bg-teal-400/20 rounded-lg mb-2"></div>
+                                <div className="w-full h-2 bg-teal-400/20 rounded-full"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div className="relative bg-base-300/50 rounded-xl border border-teal-400/20 hover:border-teal-400/40 transition-all group overflow-hidden">
+                    <div
+                        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
+                        style={{
+                            width: "600px",
+                            height: "600px",
+                            background: "radial-gradient(circle, rgba(45, 212, 191, 0.2) 0%, rgba(45, 212, 191, 0) 70%)",
+                            filter: "blur(24px)",
+                            transform: "translate(-50%, -50%)",
+                            transition: "all 0.3s ease-in-out",
+                        }}
+                    />
+
+                    <div className="absolute bg-base-300 top-10 left-1/2 -translate-x-1/2 w-[280px] h-[520px] border-8 border-primary-content rounded-[3rem] shadow-lg">
+                        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-24 h-6 bg-primary-content rounded-b-xl"></div>
+                    </div>
+
+                    <div className="relative h-full p-6 pt-24 pb-12 flex flex-col items-center">
+                        <div className="w-[240px] space-y-4">
+                            <div className="text-center space-y-2">
+                                <h3 className="text-xl font-medium text-white group-hover:text-teal-400 transition-colors">Mobile Developer</h3>
+                            </div>
+
+                            <div className="space-y-2">
+                                <div className="p-3 bg-base-300/30 rounded-xl border border-teal-400/20">
+                                    <div className="w-full h-2 bg-teal-400/20 rounded-full"></div>
+                                </div>
+                                <div className="grid grid-cols-2 gap-2">
+                                    <div className="p-3 bg-base-300/30 rounded-xl border border-teal-400/20">
+                                        <div className="w-full h-2 bg-teal-400/20 rounded-full"></div>
+                                    </div>
+                                    <div className="p-3 bg-base-300/30 rounded-xl border border-teal-400/20">
+                                        <div className="w-full h-2 bg-teal-400/20 rounded-full"></div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <p className="text-white/70 text-sm text-center">
+                                Crafting intuitive cross-platform mobile experiences with modern frameworks and native solutions.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div className="w-full h-px bg-gradient-to-r from-transparent via-teal-400/20 to-transparent" /> */}
+
+            <div className="space-y-6">
                 <div className="space-y-4">
                     <h2 className="text-2xl sm:text-3xl font-bold text-white flex items-center gap-3">
                         <span className="text-teal-400 text-2xl sm:text-3xl">{"{"}</span>
@@ -137,135 +225,56 @@ export function ExperienceSection() {
                         </div>
                     ))}
                 </div>
-            </motion.div>
-        ),
-        []
-    );
+            </div>
 
-    // Memoize highlights section
-    // const highlightsSection = useMemo(
-    //     () => (
-    //         <motion.div variants={memoizedItem} className='grid grid-cols-1 md:grid-cols-2 gap-8 h-[400px]'>
-    //             {/* Full Stack Developer Card */}
-    //             <motion.div className='relative bg-base-300/50 rounded-xl border border-teal-400/20 hover:border-teal-400/40 transition-all group overflow-hidden'>
-    //                 {/* Browser-like header */}
-    //                 <div className='px-4 py-2 border-b border-teal-400/20 bg-base-300/70 flex items-center gap-2'>
-    //                     <div className='flex gap-1.5'>
-    //                         <div className='w-2.5 h-2.5 rounded-full bg-red-400/80'></div>
-    //                         <div className='w-2.5 h-2.5 rounded-full bg-yellow-400/80'></div>
-    //                         <div className='w-2.5 h-2.5 rounded-full bg-green-400/80'></div>
-    //                     </div>
-    //                     <div className='flex-1 flex justify-center'>
-    //                         <div className='px-3 py-0.5 text-xs text-white bg-base-300/50 rounded-md border border-teal-400/20'>fullstack-developer.app</div>
-    //                     </div>
-    //                 </div>
+            <div className="w-full h-px bg-gradient-to-r from-transparent via-teal-400/20 to-transparent" />
 
-    //                 {/* Content area */}
-    //                 <div className='p-4 space-y-4'>
-    //                     {/* Navigation Bar */}
-    //                     <div className='flex items-center justify-between p-2 bg-base-300/30 rounded-lg border border-teal-400/20'>
-    //                         <div className='w-8 h-8 bg-teal-400/20 rounded-lg'></div>
-    //                         <div className='flex gap-3'>
-    //                             <div className='w-16 h-2 bg-teal-400/20 rounded-full'></div>
-    //                             <div className='w-16 h-2 bg-teal-400/20 rounded-full'></div>
-    //                             <div className='w-16 h-2 bg-teal-400/20 rounded-full'></div>
-    //                         </div>
-    //                     </div>
+            <div className="space-y-6">
+                <h3 className="text-xl sm:text-2xl font-semibold text-white flex items-center gap-3">
+                    <span className="text-teal-400 text-2xl sm:text-3xl">{"{"}</span>
+                    Education
+                    <span className="text-teal-400 text-2xl sm:text-3xl">{"}"}</span>
+                </h3>
+                <div className="space-y-4">
+                    <div className="bg-base-300/50 rounded-xl p-4 sm:p-6 border border-teal-400/20 hover:border-teal-400/40 transition-all group">
+                        <div className="flex flex-col gap-4">
+                            <div className="flex items-start justify-between gap-4">
+                                <div className="space-y-2">
+                                    <div className="flex items-center gap-2">
+                                        <span>🎓</span>
+                                        <h4 className="text-base sm:text-xl font-medium text-white group-hover:text-teal-400 transition-colors">
+                                            College Diploma, Computer Programming
+                                        </h4>
+                                    </div>
+                                    <p className="text-teal-400 font-medium text-sm sm:text-base">Algonquin College of Applied Arts and Technology</p>
+                                </div>
+                                <p className="text-white/60 text-xs sm:text-sm font-medium whitespace-nowrap">2024 - 2026</p>
+                            </div>
+                            <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-3">
+                                <p className="text-white/70 text-xs sm:text-sm mt-2 max-w-2xl">
+                                    Relevant Coursework: Java, Python, C#, ASP.NET Core, Entity Framework, PostgreSQL, MySQL, Object Oriented Programming,
+                                    Network Systems
+                                </p>
+                                <div className="px-3 py-1.5 bg-teal-400/10 rounded-lg border border-teal-400/30 self-start sm:self-auto">
+                                    <p className="text-teal-400 text-xs sm:text-sm font-medium whitespace-nowrap">In Progress</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
-    //                     {/* Hero Section with Text */}
-    //                     <div className='p-6 bg-base-300/30 rounded-lg border border-teal-400/20'>
-    //                         <h3 className='text-xl font-medium text-white group-hover:text-teal-400 transition-colors mb-2'>Full Stack Developer</h3>
-    //                         <p className='text-white/70 text-sm leading-relaxed'>
-    //                             Experienced in building complete web applications from frontend to backend deployment.
-    //                         </p>
-    //                     </div>
+            <div className="w-full h-px bg-gradient-to-r from-transparent via-teal-400/20 to-transparent" />
 
-    //                     {/* Three Column Section */}
-    //                     <div className='grid grid-cols-3 gap-3'>
-    //                         <div className='p-3 bg-base-300/30 rounded-lg border border-teal-400/20'>
-    //                             <div className='w-8 h-8 bg-teal-400/20 rounded-lg mb-2'></div>
-    //                             <div className='w-full h-2 bg-teal-400/20 rounded-full'></div>
-    //                         </div>
-    //                         <div className='p-3 bg-base-300/30 rounded-lg border border-teal-400/20'>
-    //                             <div className='w-8 h-8 bg-teal-400/20 rounded-lg mb-2'></div>
-    //                             <div className='w-full h-2 bg-teal-400/20 rounded-full'></div>
-    //                         </div>
-    //                         <div className='p-3 bg-base-300/30 rounded-lg border border-teal-400/20'>
-    //                             <div className='w-8 h-8 bg-teal-400/20 rounded-lg mb-2'></div>
-    //                             <div className='w-full h-2 bg-teal-400/20 rounded-full'></div>
-    //                         </div>
-    //                     </div>
-    //                 </div>
-    //             </motion.div>
-
-    //             {/* Mobile Developer Card */}
-    //             <motion.div className='relative bg-base-300/50 rounded-xl border border-teal-400/20 hover:border-teal-400/40 transition-all group overflow-hidden'>
-    //                 {/* Glow Effect */}
-    //                 <div
-    //                     className='absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2'
-    //                     style={{
-    //                         width: '600px',
-    //                         height: '600px',
-    //                         background: 'radial-gradient(circle, rgba(45, 212, 191, 0.2) 0%, rgba(45, 212, 191, 0) 70%)',
-    //                         filter: 'blur(24px)',
-    //                         transform: 'translate(-50%, -50%)',
-    //                         transition: 'all 0.3s ease-in-out',
-    //                     }}
-    //                 />
-
-    //                 {/* Phone frame */}
-    //                 <div className='absolute bg-base-300 top-10 left-1/2 -translate-x-1/2 w-[280px] h-[520px] border-8 border-primary-content rounded-[3rem] shadow-lg'>
-    //                     <div className='absolute top-0 left-1/2 -translate-x-1/2 w-24 h-6 bg-primary-content rounded-b-xl'></div>
-    //                 </div>
-
-    //                 {/* Content */}
-    //                 <div className='relative h-full p-6 pt-24 pb-12 flex flex-col items-center'>
-    //                     {/* App-like interface */}
-    //                     <div className='w-[240px] space-y-4'>
-    //                         {/* Header */}
-    //                         <div className='text-center space-y-2'>
-    //                             <h3 className='text-xl font-medium text-white group-hover:text-teal-400 transition-colors'>Mobile Developer</h3>
-    //                         </div>
-
-    //                         {/* App-like elements */}
-    //                         <div className='space-y-2'>
-    //                             <div className='p-3 bg-base-300/30 rounded-xl border border-teal-400/20'>
-    //                                 <div className='w-full h-2 bg-teal-400/20 rounded-full'></div>
-    //                             </div>
-    //                             <div className='grid grid-cols-2 gap-2'>
-    //                                 <div className='p-3 bg-base-300/30 rounded-xl border border-teal-400/20'>
-    //                                     <div className='w-full h-2 bg-teal-400/20 rounded-full'></div>
-    //                                 </div>
-    //                                 <div className='p-3 bg-base-300/30 rounded-xl border border-teal-400/20'>
-    //                                     <div className='w-full h-2 bg-teal-400/20 rounded-full'></div>
-    //                                 </div>
-    //                             </div>
-    //                         </div>
-
-    //                         {/* Description */}
-    //                         <p className='text-white/70 text-sm text-center'>
-    //                             Crafting intuitive cross-platform mobile experiences with modern frameworks and native solutions.
-    //                         </p>
-    //                     </div>
-    //                 </div>
-    //             </motion.div>
-    //         </motion.div>
-    //     ),
-    //     [memoizedItem]
-    // );
-
-    // Memoize skills section
-    const skillsSection = useMemo(
-        () => (
-            <motion.div className="space-y-6">
+            <div className="space-y-6">
                 <h3 className="text-xl sm:text-2xl font-semibold text-white flex items-center gap-3">
                     <span className="text-teal-400 text-2xl sm:text-3xl">{"{"}</span>
                     Technical Arsenal
                     <span className="text-teal-400 text-2xl sm:text-3xl">{"}"}</span>
                 </h3>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    {memoizedSkillCategories.map((category) => (
-                        <motion.div
+                    {skillCategories.map((category) => (
+                        <div
                             key={category.name}
                             className="bg-base-300/50 rounded-xl p-4 sm:p-5 border border-teal-400/20 hover:border-teal-400/40 transition-all group"
                         >
@@ -283,126 +292,10 @@ export function ExperienceSection() {
                                     </div>
                                 ))}
                             </div>
-                        </motion.div>
+                        </div>
                     ))}
                 </div>
-            </motion.div>
-        ),
-        [memoizedSkillCategories]
-    );
-
-    // Memoize education and focus section
-    const educationAndFocusSection = useMemo(
-        () => (
-            <motion.div className="space-y-6">
-                {/* Education */}
-                <motion.div>
-                    <div className="space-y-6">
-                        <h3 className="text-xl sm:text-2xl font-semibold text-white flex items-center gap-3">
-                            <span className="text-teal-400 text-2xl sm:text-3xl">{"{"}</span>
-                            Education
-                            <span className="text-teal-400 text-2xl sm:text-3xl">{"}"}</span>
-                        </h3>
-                        <div className="space-y-4">
-                            <div className="bg-base-300/50 rounded-xl p-4 sm:p-6 border border-teal-400/20 hover:border-teal-400/40 transition-all group">
-                                <div className="flex flex-col gap-4">
-                                    <div className="flex items-start justify-between gap-4">
-                                        <div className="space-y-2">
-                                            <div className="flex items-center gap-2">
-                                                <span>🎓</span>
-                                                <h4 className="text-base sm:text-xl font-medium text-white group-hover:text-teal-400 transition-colors">
-                                                    College Diploma, Computer Programming
-                                                </h4>
-                                            </div>
-                                            <p className="text-teal-400 font-medium text-sm sm:text-base">Algonquin College of Applied Arts and Technology</p>
-                                        </div>
-                                        <p className="text-white/60 text-xs sm:text-sm font-medium whitespace-nowrap">2024 - 2026</p>
-                                    </div>
-                                    <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-3">
-                                        <p className="text-white/70 text-xs sm:text-sm mt-2 max-w-2xl">
-                                            Relevant Coursework: Java, Python, C#, ASP.NET Core, Entity Framework, PostgreSQL, MySQL, Object Oriented
-                                            Programming, Network Systems
-                                        </p>
-                                        <div className="px-3 py-1.5 bg-teal-400/10 rounded-lg border border-teal-400/30 self-start sm:self-auto">
-                                            <p className="text-teal-400 text-xs sm:text-sm font-medium whitespace-nowrap">In Progress</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </motion.div>
-            </motion.div>
-        ),
-        []
-    );
-
-    return (
-        <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.2 }} className="space-y-8">
-            {experienceSection}
-
-            {/* Divider */}
-            <div className="w-full h-px bg-gradient-to-r from-transparent via-teal-400/20 to-transparent" />
-
-            {educationAndFocusSection}
-
-            {/* Divider */}
-            <div className="w-full h-px bg-gradient-to-r from-transparent via-teal-400/20 to-transparent" />
-
-            {skillsSection}
-
-            {/* Divider */}
-            {/* <div className="w-full h-px bg-gradient-to-r from-transparent via-teal-400/20 to-transparent" /> */}
-
-            {/* Current Interests Section */}
-            {/* <motion.div variants={memoizedItem} className="space-y-6">
-        <h3 className="text-2xl font-semibold text-white flex items-center gap-3">
-          <span className="text-teal-400 text-3xl">{"{"}</span>
-          Current Interests
-          <span className="text-teal-400 text-3xl">{"}"}</span>
-        </h3>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-          <div className="space-y-2 p-3 bg-base-300/30 rounded-lg border border-teal-400/10 hover:border-teal-400/30 transition-all">
-            <h5 className="text-white/90 font-medium flex items-center gap-2">
-              <span className="text-teal-400 text-lg">▹</span>
-              AI & Machine Learning
-            </h5>
-            <p className="text-white/60 text-sm pl-6">
-              Integrating AI capabilities into applications to enhance user
-              experiences and automate complex tasks through APIs and ML models.
-            </p>
-          </div>
-          <div className="space-y-2 p-3 bg-base-300/30 rounded-lg border border-teal-400/10 hover:border-teal-400/30 transition-all">
-            <h5 className="text-white/90 font-medium flex items-center gap-2">
-              <span className="text-teal-400 text-lg">▹</span>
-              Backend Development
-            </h5>
-            <p className="text-white/60 text-sm pl-6">
-              Strengthening server-side expertise with advanced design patterns
-              and microservices architecture.
-            </p>
-          </div>
-          <div className="space-y-2 p-3 bg-base-300/30 rounded-lg border border-teal-400/10 hover:border-teal-400/30 transition-all">
-            <h5 className="text-white/90 font-medium flex items-center gap-2">
-              <span className="text-teal-400 text-lg">▹</span>
-              DevOps & Infrastructure
-            </h5>
-            <p className="text-white/60 text-sm pl-6">
-              Expanding knowledge in CI/CD pipelines, container orchestration,
-              and cloud infrastructure management.
-            </p>
-          </div>
-          <div className="space-y-2 p-3 bg-base-300/30 rounded-lg border border-teal-400/10 hover:border-teal-400/30 transition-all">
-            <h5 className="text-white/90 font-medium flex items-center gap-2">
-              <span className="text-teal-400 text-lg">▹</span>
-              Mobile Development
-            </h5>
-            <p className="text-white/60 text-sm pl-6">
-              Exploring native mobile app development with Swift and SwiftUI.
-            </p>
-          </div>
+            </div>
         </div>
-      </motion.div> */}
-        </motion.div>
     );
 }
