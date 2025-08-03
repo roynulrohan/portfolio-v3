@@ -1,38 +1,38 @@
-import { RouterProvider, createRouter } from '@tanstack/react-router';
-import { StrictMode } from 'react';
-import ReactDOM from 'react-dom/client';
-import './index.css';
+import { RouterProvider, createRouter } from "@tanstack/react-router";
+import { StrictMode } from "react";
+import ReactDOM from "react-dom/client";
+import "./index.css";
 
 // Import the generated route tree
-import { routeTree } from './routeTree.gen';
+import { routeTree } from "./routeTree.gen";
 
 // Create a new router instance
-const router = createRouter({ 
+const router = createRouter({
     routeTree,
-    defaultPreload: 'intent',
+    defaultPreload: "intent",
     defaultPreloadStaleTime: 0,
     defaultPendingComponent: () => (
-        <div className='fixed inset-0 bg-gradient-to-br from-base-300 via-base-200 to-base-300'>
-            <div className='absolute inset-0 overflow-hidden'>
-                <div className='absolute -top-[30%] -left-[20%] w-[70%] h-[70%] rounded-full bg-teal-400/20 blur-3xl'></div>
-                <div className='absolute -bottom-[30%] -right-[20%] w-[70%] h-[70%] rounded-full bg-teal-400/20 blur-3xl'></div>
+        <div className="fixed inset-0 bg-gradient-to-br from-base-300 via-base-200 to-base-300">
+            <div className="absolute inset-0 overflow-hidden">
+                <div className="absolute -top-[30%] -left-[20%] w-[70%] h-[70%] rounded-full bg-teal-400/20 blur-3xl"></div>
+                <div className="absolute -bottom-[30%] -right-[20%] w-[70%] h-[70%] rounded-full bg-teal-400/20 blur-3xl"></div>
             </div>
         </div>
     ),
 });
 
 // Register the router instance for type safety
-declare module '@tanstack/react-router' {
+declare module "@tanstack/react-router" {
     interface Register {
         router: typeof router;
     }
 }
 
 // Initialize the app
-const rootElement = document.getElementById('root')!;
+const rootElement = document.getElementById("root")!;
 if (!rootElement.innerHTML) {
     const root = ReactDOM.createRoot(rootElement);
-    
+
     // Dehydrate the router cache and render
     router.load().then(() => {
         root.render(

@@ -1,4 +1,4 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, useLocation } from "@tanstack/react-router";
 import { useCallback, useMemo, useState } from "react";
 import AnimatedLetter from "../components/AnimatedLetter";
 import { Footer } from "../components/Footer";
@@ -19,21 +19,7 @@ const description =
     "A developer who believes in smart solutions over complex ones. My experience in both government and freelance sectors has taught me that great software doesn't need to be expensive - just well-crafted.";
 
 function Index() {
-    const [selectedTabIndex, setSelectedTabIndex] = useState(0);
-
-    const getAnimatedText = useCallback((text: string) => {
-        return text.split(" ").map((word, wordIndex) => (
-            <span className="inline-flex mr-2" key={`word-${wordIndex}`}>
-                {word.split("").map((letter, letterIndex) => (
-                    <AnimatedLetter letter={letter} animation="rubberBand" key={`${word}-${letterIndex}`} />
-                ))}
-            </span>
-        ));
-    }, []);
-
-    const getAnimatedRoleMessage = useMemo(() => getAnimatedText(roleMessage), [roleMessage, getAnimatedText]);
-    const getAnimatedTitle = useMemo(() => getAnimatedText(title), [title, getAnimatedText]);
-    const getAnimatedTagline = useMemo(() => getAnimatedText(tagline), [tagline, getAnimatedText]);
+    const location = useLocation();
 
     const tabs = useMemo(
         () => [
@@ -64,6 +50,30 @@ function Index() {
         ],
         []
     );
+
+    const [selectedTabIndex, setSelectedTabIndex] = useState(tabs.findIndex((tab) => tab.id === location.hash.replace("#", "")) || 0);
+
+    const handleTabChange = useCallback(
+        (index: number) => {
+            setSelectedTabIndex(index);
+            window.history.pushState(null, "", `#${tabs[index].id}`);
+        },
+        [tabs]
+    );
+
+    const getAnimatedText = useCallback((text: string) => {
+        return text.split(" ").map((word, wordIndex) => (
+            <span className="inline-flex mr-2" key={`word-${wordIndex}`}>
+                {word.split("").map((letter, letterIndex) => (
+                    <AnimatedLetter letter={letter} animation="rubberBand" key={`${word}-${letterIndex}`} />
+                ))}
+            </span>
+        ));
+    }, []);
+
+    const getAnimatedRoleMessage = useMemo(() => getAnimatedText(roleMessage), [roleMessage, getAnimatedText]);
+    const getAnimatedTitle = useMemo(() => getAnimatedText(title), [title, getAnimatedText]);
+    const getAnimatedTagline = useMemo(() => getAnimatedText(tagline), [tagline, getAnimatedText]);
 
     return (
         <div className="relative min-h-screen">
@@ -171,7 +181,7 @@ function Index() {
                 {/* Content Section */}
                 <section className="relative px-4">
                     <div className="max-w-[90rem] mx-auto -mt-28">
-                        <TabView tabs={tabs} selectedIndex={selectedTabIndex} onChange={setSelectedTabIndex} className="w-full" />
+                        <TabView tabs={tabs} selectedIndex={selectedTabIndex} onChange={handleTabChange} className="w-full" />
                     </div>
                 </section>
 
