@@ -194,12 +194,12 @@ export default function ProjectCard({ project, className, ...props }: ProjectCar
                 <div className={cn("space-y-4 flex-1 flex flex-col justify-between", project.isMobile || isMobile ? "min-w-[50%] p-4" : "p-4")}>
                     <div className="space-y-2">
                         <div className={cn("flex items-center justify-between gap-2", project.isMobile || isMobile ? "flex-col" : "flex-row")}>
-                            <h3 className="text-xl font-semibold text-white group-hover:text-teal-400 transition-colors">{project.title}</h3>
+                            <h3 className="text-lg sm:text-xl font-semibold text-white group-hover:text-teal-400 transition-colors">{project.title}</h3>
                             <div className="flex flex-wrap justify-center gap-2">
                                 {project.date && (
                                     <span
                                         className={cn(
-                                            "text-xs font-medium border rounded-full px-4 py-1 w-fit backdrop-blur-sm",
+                                            "text-xs font-medium border rounded-full px-3 sm:px-4 py-1 w-fit backdrop-blur-sm",
                                             "bg-gradient-to-r from-blue-500/20 to-indigo-500/20 text-blue-300 border-blue-500/30"
                                         )}
                                     >
@@ -209,7 +209,7 @@ export default function ProjectCard({ project, className, ...props }: ProjectCar
                                 {project.status && (
                                     <span
                                         className={cn(
-                                            "text-xs font-medium border rounded-full px-4 py-1 w-fit backdrop-blur-sm",
+                                            "text-xs font-medium border rounded-full px-3 sm:px-4 py-1 w-fit backdrop-blur-sm",
                                             project.status === "Launched" &&
                                                 "bg-gradient-to-r from-emerald-500/20 to-teal-500/20 text-emerald-300 border-emerald-500/30",
                                             project.status === "In Development" &&
@@ -224,7 +224,7 @@ export default function ProjectCard({ project, className, ...props }: ProjectCar
                                 {project.info && (
                                     <span
                                         className={cn(
-                                            "text-xs font-medium border rounded-full px-4 py-1 w-fit backdrop-blur-sm",
+                                            "text-xs font-medium border rounded-full px-3 sm:px-4 py-1 w-fit backdrop-blur-sm",
                                             "bg-gradient-to-r from-purple-500/20 to-pink-500/20 text-purple-300 border-purple-500/30"
                                         )}
                                     >
@@ -233,14 +233,14 @@ export default function ProjectCard({ project, className, ...props }: ProjectCar
                                 )}
                             </div>
                         </div>
-                        <p className="text-white/70 text-sm">{project.description}</p>
+                        <p className="text-white/70 text-xs sm:text-sm">{project.description}</p>
                     </div>
                     {project.features && (
                         <div>
-                            <h4 className="text-sm font-medium text-white mb-2">Key Features</h4>
+                            <h4 className="text-xs sm:text-sm font-medium text-white mb-2">Key Features</h4>
                             <ul className={cn("grid grid-cols-1 gap-1", project.isMobile ? "grid-cols-1" : "grid-cols-2")}>
                                 {project.features.map((feature) => (
-                                    <li key={feature} className="flex items-center gap-2 text-white/70 text-sm">
+                                    <li key={feature} className="flex items-start gap-2 text-white/70 text-xs sm:text-sm">
                                         <span className="text-teal-400 text-xs">▹</span>
                                         {feature}
                                     </li>
@@ -250,7 +250,7 @@ export default function ProjectCard({ project, className, ...props }: ProjectCar
                     )}
                     <div className="flex flex-col gap-3">
                         <div>
-                            <h4 className="text-sm font-medium text-white mb-2">Technologies</h4>
+                            <h4 className="text-xs sm:text-sm font-medium text-white mb-2">Technologies</h4>
                             <div className="flex flex-wrap gap-1.5">
                                 {project.technologies.map((tech) => (
                                     <span key={tech} className="px-2 py-0.5 bg-teal-400/10 text-teal-400 rounded-full text-xs">
@@ -269,7 +269,7 @@ export default function ProjectCard({ project, className, ...props }: ProjectCar
                                         target="_blank"
                                         rel="noopener noreferrer"
                                         className={cn(
-                                            "flex-1 px-3 py-1.5 font-medium rounded-lg transition-all text-center text-sm flex items-center justify-center gap-2",
+                                            "flex-1 px-3 py-1.5 font-medium rounded-lg transition-all text-center text-xs sm:text-sm flex items-center justify-center gap-2",
                                             link.type === "github" &&
                                                 "bg-gray-800 hover:bg-gray-700 text-white border-gray-600 hover:border-gray-500 shadow-sm hover:shadow-md",
                                             link.type === "website" && "bg-teal-400 hover:bg-teal-500 text-black/80 hover:text-black",
@@ -277,9 +277,9 @@ export default function ProjectCard({ project, className, ...props }: ProjectCar
                                                 "bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white border-purple-500 hover:border-purple-600 shadow-sm hover:shadow-md"
                                         )}
                                     >
-                                        {link.type === "github" && <GithubIcon size={16} />}
-                                        {link.type === "website" && <Globe size={16} />}
-                                        {link.type === "demo" && <Play size={16} />}
+                                        {link.type === "github" && <GithubIcon size={14} className="sm:w-4 sm:h-4" />}
+                                        {link.type === "website" && <Globe size={14} className="sm:w-4 sm:h-4" />}
+                                        {link.type === "demo" && <Play size={14} className="sm:w-4 sm:h-4" />}
                                         <span>{link.title}</span>
                                     </a>
                                 ))}
