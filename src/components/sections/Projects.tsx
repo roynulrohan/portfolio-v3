@@ -95,6 +95,13 @@ const projects: Project[] = [
             "AI chatbot for assignment queries",
         ],
         imagesFolder: "ivy-ai",
+        links: [
+            {
+                title: "Website",
+                link: "https://www.ivyai.app/",
+                type: "website",
+            },
+        ],
     },
     {
         title: "⛏️ Minerverse",
